@@ -1,0 +1,24 @@
+# Ambientes virtuais
+venv/
+env/
+.venv/
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VSCode
+.vscode/
+
+# Variáveis de ambiente
+.env
+
+# Dados gerados (remova o comentário abaixo se preferir não versionar os CSVs de resultado)
+# *.csv
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
