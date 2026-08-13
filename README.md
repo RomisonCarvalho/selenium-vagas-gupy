@@ -1,6 +1,6 @@
 # Automação de Busca de Vagas com Selenium
 
-🚧 Projeto em desenvolvimento
+🚀 Núcleo funcional concluído — em fase de polimento
 
 ## Objetivo
 
@@ -15,23 +15,25 @@ O projeto nasceu de uma necessidade real: automatizar parte do processo de busca
 - Pandas
 - Jupyter Notebook
 
-## Funcionalidades planejadas
+## Funcionalidades
 
-- [ ] Automatizar a busca de vagas por cargo/palavra-chave no Gupy
-- [ ] Extrair informações de cada vaga (título, empresa, local, link)
-- [ ] Coletar todas as vagas da página de resultados
-- [ ] Navegar pela paginação de resultados, se houver
-- [ ] Organizar os dados coletados em um DataFrame e exportar para CSV
-- [ ] (Futuro) Evitar duplicidade entre execuções
+- [x] Buscar vagas por cargo/palavra-chave no Gupy (via URL parametrizada, com filtro de localização)
+- [x] Extrair informações de cada vaga (título, empresa, local, modelo de trabalho, tipo de vaga, afirmativa para PcD, data de publicação e link)
+- [x] Coletar todas as vagas da página de resultados
+- [x] Navegar automaticamente por todas as páginas de resultados (paginação)
+- [x] Buscar múltiplos cargos numa única execução
+- [x] Tratar erros de carregamento (timeout) e buscas sem nenhuma vaga encontrada
+- [x] Organizar os dados em um DataFrame, tratar datas e valores nulos, e exportar para CSV
+- [ ] (Futuro) Evitar duplicidade de vagas entre buscas por cargos diferentes
 - [ ] (Futuro) Automatizar a execução periódica
 
 ## Status
 
-Projeto em construção — as etapas serão documentadas e commitadas conforme forem desenvolvidas.
+O núcleo do projeto (busca, extração, paginação e exportação) está funcional e testado de ponta a ponta. Etapa atual: polimento — remoção de código não utilizado, revisão das esperas do navegador e organização final do notebook.
 
 ## Como rodar
 
-_Em breve, assim que a primeira versão do notebook estiver funcional._
+_Em breve, assim que a estrutura final do notebook estiver definida._
 
 ## Autor
 
