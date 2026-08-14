@@ -17,14 +17,14 @@ O projeto nasceu de uma necessidade real: automatizar parte do processo de busca
 
 ## Funcionalidades
 
-- [x] Buscar vagas por cargo/palavra-chave no Gupy (via URL parametrizada, com filtro de localização)
-- [x] Extrair informações de cada vaga (título, empresa, local, modelo de trabalho, tipo de vaga, afirmativa para PcD, data de publicação e link)
-- [x] Coletar todas as vagas da página de resultados
-- [x] Navegar automaticamente por todas as páginas de resultados (paginação)
-- [x] Buscar múltiplos cargos numa única execução
-- [x] Tratar erros de carregamento (timeout) e buscas sem nenhuma vaga encontrada
-- [x] Organizar os dados em um DataFrame, tratar datas e valores nulos, e exportar para CSV
-- [ ] (Futuro) Evitar duplicidade de vagas entre buscas por cargos diferentes
+- [X] Buscar vagas por cargo/palavra-chave no Gupy (via URL parametrizada, com filtro de localização)
+- [X] Extrair informações de cada vaga (título, empresa, local, modelo de trabalho, tipo de vaga, afirmativa para PcD, data de publicação e link)
+- [X] Coletar todas as vagas da página de resultados
+- [X] Navegar automaticamente por todas as páginas de resultados (paginação)
+- [X] Buscar múltiplos cargos numa única execução
+- [X] Tratar erros de carregamento (timeout) e buscas sem nenhuma vaga encontrada
+- [X] Organizar os dados em um DataFrame, tratar datas e valores nulos, e exportar para CSV
+- [X] Evitar duplicidade de vagas entre buscas por cargos diferentes
 - [ ] (Futuro) Automatizar a execução periódica
 
 ## Status
