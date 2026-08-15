@@ -191,8 +191,8 @@ if __name__ == "__main__":
         "Estágio TI",
         "Analista de Dados Júnior",
         "Desenvolvedor Júnior",
-        "Analista de Automação Júnior",
-        "Automaçao Júnior"
+        "Python Junior",
+        "Analista de KYC"
         ]
 
     vagas_encontradas = []
@@ -220,15 +220,24 @@ if __name__ == "__main__":
     for coluna in colunas_nulos:
         tabela_vagas[coluna] = tabela_vagas[coluna].fillna("Não informado") 
 
-    # Remove vagas repetidas entre buscas de cargos diferentes, usando o
-    # link como identificador único de cada vaga
-    tabela_vagas = tabela_vagas.drop_duplicates(subset=["Link"])
-
     caminho_csv = pasta_projeto / "reports" / "vagas_encontradas.csv"
 
-    tabela_vagas.to_csv(caminho_csv, index=False, sep=";", encoding="utf-8-sig", date_format='%d/%m/%Y')
+    if caminho_csv.exists():
+        dados_antigos = pd.read_csv(caminho_csv, sep=";", encoding="utf-8-sig", parse_dates=["Data"], date_format='%d/%m/%Y')
+    else:
+        dados_antigos = pd.DataFrame(columns=tabela_vagas.columns)
 
-    print(f"Total de vagas encontradas: {len(tabela_vagas)}")
+    dados_finais = pd.concat([dados_antigos, tabela_vagas], ignore_index=True)
+
+    # Remove vagas repetidas entre buscas de cargos diferentes, usando o
+    # link como identificador único de cada vaga
+    dados_finais = dados_finais.drop_duplicates(subset=["Link"])
+
+    print(f"Quantidade de novas vagas adicionadas: {len(dados_finais) - len(dados_antigos)}")
+    
+    dados_finais.to_csv(caminho_csv, index=False, sep=";", encoding="utf-8-sig", date_format='%d/%m/%Y')
+
+    print(f"Total de vagas encontradas: {len(dados_finais)}")
     driver.quit()
 
 
