@@ -3,7 +3,6 @@
 
 # Projeto de automação com Selenium para busca e coleta de vagas no Gupy.
 
-
 ## 1. Configuração inicial
  
 # Importação de bibliotecas e configuração do navegador.
@@ -23,14 +22,13 @@ import pandas as pd
 import logging
 
 
-
 ## 2. Busca, extração e paginação
  
 # Função que busca vagas para um cargo, navega automaticamente por todas as páginas de resultado e extrai os dados de cada vaga encontrada.
 
 def buscar_vagas(driver: WebDriver, termo: str) -> list:
     """
-    Realiza a raspagem de vagas no Portal Gupy para uma localidade específica.
+    Realiza a busca e coleta de vagas remotas no Portal Gupy para um termo informado.
 
     Navega pelas páginas de resultados coletando informações detalhadas de cada 
     vaga disponível e trata possíveis instabilidades de carregamento ou fim de paginação.
@@ -44,7 +42,7 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
         informações de uma vaga (Título, Empresa, Local, Modelo, Tipo, Data, Link).
         Retorna uma lista vazia se nenhuma vaga for encontrada ou houver timeout.
     """
-    # Monta a URL de busca já com o cargo e o filtro de localização codificados
+    # Monta a URL de busca já com o cargo e o filtro de modelo de trabalho
     nome_vaga = quote(termo)
 
     # Filtra apenas vagas com modelo de trabalho remoto; "remote" não precisa
@@ -77,6 +75,9 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
                 titulo = vaga.find_element(By.TAG_NAME, "h3").text
 
                 empresas = vaga.find_elements(By.TAG_NAME, "p")
+
+                nome_empresa = None
+                data_vaga_publicada = None
 
                 # O card tem dois <p>: um é a empresa, o outro é a data de publicação
                 # (identificados pelo prefixo fixo "Publicada em:")
@@ -214,68 +215,98 @@ if __name__ == "__main__":
     opcoes.add_argument("--window-size=1920,1080")
     
     driver = webdriver.Chrome(service=servico, options=opcoes)
-    driver.get("https://portal.gupy.io/job-search")
+    
+    try:
+        driver.get("https://portal.gupy.io/job-search")
 
-    ## 4. Execução para múltiplos cargos
+        ## 4. Execução para múltiplos cargos
 
-    # Executa a busca para uma lista de cargos, juntando os resultados de todos em uma única lista.
+        # Executa a busca para uma lista de cargos, juntando os resultados de todos em uma única lista.
 
-    cargos = [
-        "Estágio TI",
-        #"Analista de Dados Júnior",
-        #"Desenvolvedor Júnior",
-        #"Python Junior",
-        #"Analista de Sistema Júnior",
-        #"Analista de Suporte Júnior"
+        cargos = [
+            "Estágio TI",
+            "Analista de Dados Júnior",
+            "Desenvolvedor Júnior",
+            "Python Junior",
+            "Analista de Sistema Júnior",
+            "Analista de Suporte Júnior"
+            ]
+
+        logging.info(f"Buscando {len(cargos)} cargos: {', '.join(cargos)}")
+
+        vagas_encontradas = []
+
+        for cargo in cargos:
+            # extend (e não append) porque cada chamada já devolve uma lista de vagas,
+            # mantendo tudo em uma única lista de dicionários, sem aninhamento
+            vagas_encontradas.extend(buscar_vagas(driver, cargo))
+
+        ## 5. Organização e exportação dos dados
+
+        # Transformar os resultados em DataFrame e exportar para CSV.
+
+        # Colunas esperadas no DataFrame
+        colunas = [
+        "Cargo Buscado",
+        "Titulo",
+        "Empresa",
+        "Local",
+        "Modelo",
+        "Tipo da Vaga",
+        "Afirmativa para PcD",
+        "Data",
+        "Link"
         ]
 
-    logging.info(f"Buscando {len(cargos)} cargos: {', '.join(cargos)}")
+        # Transformar os resultados em DataFrame
+        df_vagas = pd.DataFrame(vagas_encontradas, columns=colunas)
 
-    vagas_encontradas = []
+        if df_vagas.empty:
+            logging.info("Nenhuma vaga foi encontrada nesta execução.")
+        else:
+            # Remove o texto fixo da data
+            df_vagas["Data"] = df_vagas["Data"].str.replace("Publicada em:", "", regex=False).str.strip()
 
-    for cargo in cargos:
-        # extend (e não append) porque cada chamada já devolve uma lista de vagas,
-        # mantendo tudo em uma única lista de dicionários, sem aninhamento
-        vagas_encontradas.extend(buscar_vagas(driver, cargo))
+        # Converte para datetime
+        # Datas ausentes ou inválidas serão convertidas para NaT
+        df_vagas["Data"] = pd.to_datetime(df_vagas["Data"], format="%d/%m/%Y", errors="coerce")
 
-    ## 5. Organização e exportação dos dados
+        # Preenche os campos opcionais
+        # Mantém a coluna Data como datetime
+        colunas_nulos = [col for col in df_vagas.columns if col != "Data"]
 
-    # Transformar os resultados em DataFrame e exportar para CSV.
+        for coluna in colunas_nulos:
+            df_vagas[coluna] = df_vagas[coluna].fillna("Não informado")
 
-    tabela_vagas = pd.DataFrame(vagas_encontradas)
+        # Lê o histórico de execuções anteriores, se existir
+        if caminho_csv.exists():
+            df_antigo = pd.read_csv(
+                caminho_csv,
+                sep=";",
+                encoding="utf-8-sig",
+                parse_dates=["Data"],
+                date_format="%d/%m/%Y"
+            )
+        else:
+            df_antigo = pd.DataFrame(columns=colunas)
 
-    # Remove o texto fixo da data e converte para datetime (dia primeiro,
-    # formato brasileiro), permitindo ordenar/filtrar por período depois
-    tabela_vagas["Data"] = tabela_vagas["Data"].str.replace("Publicada em:", "", regex=False).str.strip()
+        # Junta o histórico com as vagas coletadas nesta execução
+        df_final = pd.concat([df_antigo, df_vagas], ignore_index=True)
 
-    tabela_vagas["Data"] = pd.to_datetime(tabela_vagas["Data"], format='%d/%m/%Y')
+        # Remove vagas repetidas pelo link
+        df_final = df_final.drop_duplicates(subset=["Link"])
 
-    # Preenche apenas os campos opcionais, mantendo a coluna Data intacta
-    colunas_nulos = [col for col in tabela_vagas.columns if col != "Data"]
+        # Quantidade de vagas que realmente foram adicionadas ao histórico
+        vagas_novas = len(df_final) - len(df_antigo)
 
-    for coluna in colunas_nulos:
-        tabela_vagas[coluna] = tabela_vagas[coluna].fillna("Não informado") 
+        # Exporta o histórico atualizado
+        df_final.to_csv(caminho_csv, index=False, sep=";", encoding="utf-8-sig", date_format="%d/%m/%Y")
 
-    # Lê o histórico de execuções anteriores, se existir, para acumular os
-    # resultados entre execuções em vez de sobrescrever a cada rodada
-    if caminho_csv.exists():
-        dados_antigos = pd.read_csv(caminho_csv, sep=";", encoding="utf-8-sig", parse_dates=["Data"], date_format='%d/%m/%Y')
-    else:
-        dados_antigos = pd.DataFrame(columns=tabela_vagas.columns)
+        logging.info(f"Arquivo CSV salvo em: {caminho_csv}")
+        logging.info(f"Vagas novas nesta execução: {vagas_novas}")
+        logging.info(f"Total acumulado de vagas: {len(df_final)}")
+        logging.info("Execução finalizada com sucesso")
+        logging.info("=" * 60)
 
-    # Junta o histórico já salvo com as vagas coletadas nesta execução
-    dados_finais = pd.concat([dados_antigos, tabela_vagas], ignore_index=True)
-
-    # Remove vagas repetidas entre buscas de cargos diferentes, usando o
-    # link como identificador único de cada vaga
-    dados_finais = dados_finais.drop_duplicates(subset=["Link"])
-
-    dados_finais.to_csv(caminho_csv, index=False, sep=";", encoding="utf-8-sig", date_format='%d/%m/%Y')
-
-    logging.info(f"Arquivo CSV salvo em: {caminho_csv}")
-    logging.info(f"Vagas novas nesta execução: {len(dados_finais) - len(dados_antigos)}")
-    logging.info(f"Total acumulado de vagas: {len(dados_finais)}")
-    logging.info("Execução finalizada com sucesso")
-    logging.info("=" * 60)
-
-    driver.quit()
+    finally:
+        driver.quit()
