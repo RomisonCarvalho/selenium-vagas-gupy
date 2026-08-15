@@ -1,0 +1,23 @@
+﻿2026-08-14 23:19:15,463 - INFO - ============================================================
+2026-08-14 23:19:15,463 - INFO - Início da execução
+2026-08-14 23:19:15,463 - INFO - ====== WebDriver manager ======
+2026-08-14 23:19:16,046 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-08-14 23:19:19,280 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
+2026-08-14 23:19:30,251 - INFO - Para o cargo 'Estágio TI' não foram encontradas vagas ou a página falhou.
+2026-08-14 23:19:30,251 - INFO - Aviso: Tempo limite atingido para o cargo Estágio TI.
+2026-08-14 23:19:41,395 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
+2026-08-14 23:19:41,396 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
+2026-08-14 23:19:53,885 - INFO - Para o cargo 'Python Junior' não foram encontradas vagas ou a página falhou.
+2026-08-14 23:19:53,885 - INFO - Aviso: Tempo limite atingido para o cargo Python Junior.
+2026-08-14 23:19:55,834 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
+2026-08-14 23:19:55,834 - INFO - Vagas novas nesta execução: 12
+2026-08-14 23:19:55,834 - INFO - Total acumulado de vagas: 12
+2026-08-14 23:19:55,834 - INFO - Execução finalizada com sucesso
+2026-08-14 23:19:55,834 - INFO - ============================================================
+2026-08-14 23:39:07,487 - INFO - ============================================================
+2026-08-14 23:39:07,488 - INFO - Início da execução
+2026-08-14 23:39:07,488 - INFO - ====== WebDriver manager ======
+2026-08-14 23:39:08,218 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-08-14 23:39:11,274 - INFO - Buscando 1 cargos: Estágio TI
+2026-08-14 23:39:22,290 - INFO - Para o cargo 'Estágio TI' não foram encontradas vagas ou a página falhou.
+2026-08-14 23:39:22,290 - INFO - Aviso: Tempo limite atingido para o cargo Estágio TI.

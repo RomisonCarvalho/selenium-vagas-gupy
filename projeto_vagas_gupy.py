@@ -15,10 +15,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import quote
 from pathlib import Path
 import pandas as pd
+import logging
+
 
 
 ## 2. Busca, extração e paginação
@@ -44,13 +47,11 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
     # Monta a URL de busca já com o cargo e o filtro de localização codificados
     nome_vaga = quote(termo)
 
-    nome_uf = "São Paulo"
-    nome_uf = quote(nome_uf)
+    # Filtra apenas vagas com modelo de trabalho remoto; "remote" não precisa
+    # de quote() por não ter espaço nem acento
+    filtro_modelo = "remote"
 
-    nome_cidade = "São Paulo"
-    nome_cidade = quote(nome_cidade)
-
-    link_vaga = f"https://portal.gupy.io/job-search/term={nome_vaga}&state={nome_uf}&city[]={nome_cidade}"
+    link_vaga = f"https://portal.gupy.io/job-search/term={nome_vaga}&workplaceTypes[]={filtro_modelo}"
 
     driver.get(link_vaga)
 
@@ -65,8 +66,8 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
                 # que o cargo não teve resultado e devolve o que já foi coletado até aqui
                 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[href*="/job/"]')))
             except TimeoutException:
-                print(f"Para o cargo '{termo}' não foram encontradas vagas ou a página falhou.")
-                print(f"Aviso: Tempo limite atingido para o cargo {termo}.")
+                logging.info(f"Para o cargo '{termo}' não foram encontradas vagas ou a página falhou.")
+                logging.info(f"Aviso: Tempo limite atingido para o cargo {termo}.")
                 return lista_vagas
 
             vagas = driver.find_elements(By.CSS_SELECTOR, 'a[href*="/job/"]')
@@ -152,15 +153,15 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
                 try:
                     # Espera o conteúdo antigo sumir do DOM antes de considerar a página
                     # seguinte carregada, evitando StaleElementReferenceException
-                    WebDriverWait(driver, 0).until(EC.staleness_of(vagas[0]))
+                    WebDriverWait(driver, 10).until(EC.staleness_of(vagas[0]))
                 except TimeoutException:
-                    print(f"Timeout ao carregar a próxima página para '{termo}'. Retornando o que foi coletado até aqui.")
+                    logging.info(f"Timeout ao carregar a próxima página para '{termo}'. Retornando o que foi coletado até aqui.")
                     return lista_vagas
             else:
                 break
 
         except NoSuchElementException:
-            print(f"Botão não encontrado. Fim das páginas para {termo}.")
+            logging.info(f"Botão não encontrado. Fim das páginas para {termo}.")
             break           
             
     return lista_vagas
@@ -173,15 +174,47 @@ if __name__ == "__main__":
     # caminho funcione independente de onde o script for executado
     pasta_projeto = Path(__file__).parent
 
+    # Garante que as pastas existam mesmo numa cópia nova do repositório
+    # (parents=True cria pastas intermediárias; exist_ok=True evita erro se já existirem)
+    pasta_reports = pasta_projeto / "reports"
+    pasta_reports.mkdir(parents=True, exist_ok=True)
+
+    pasta_logs = pasta_projeto / "logs"
+    pasta_logs.mkdir(parents=True, exist_ok=True)
+
+    caminho_csv = pasta_reports / "vagas_encontradas.csv"
+
+    caminho_log = pasta_logs / "execucao.log"
+
+    # Registra as execuções em arquivo (com data/hora de cada linha), já que o
+    # script roda de forma automática e sem supervisão via Agendador de Tarefas
+    logging.basicConfig(
+    filename=caminho_log,
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    encoding="utf-8-sig"
+    )
+
+    # Separador visual no log, facilitando identificar onde cada execução começa
+    logging.info("=" * 60)
+    logging.info("Início da execução")
+
     ## 3. Iniciar o navegador
 
     # Criação da instância do navegador e acesso à página inicial do Gupy.
 
     # Abre o navegador e acessa a página inicial do Gupy
     servico = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=servico)
+
+    # Roda sem interface visível (headless) e fixa o tamanho de renderização,
+    # já que o site é responsivo e sem isso poderia carregar em layout mobile,
+    # quebrando os seletores validados no layout desktop
+    opcoes = Options()
+    opcoes.add_argument("--headless=new")
+    opcoes.add_argument("--window-size=1920,1080")
+    
+    driver = webdriver.Chrome(service=servico, options=opcoes)
     driver.get("https://portal.gupy.io/job-search")
-    driver.maximize_window()
 
     ## 4. Execução para múltiplos cargos
 
@@ -189,11 +222,14 @@ if __name__ == "__main__":
 
     cargos = [
         "Estágio TI",
-        "Analista de Dados Júnior",
-        "Desenvolvedor Júnior",
-        "Python Junior",
-        "Analista de KYC"
+        #"Analista de Dados Júnior",
+        #"Desenvolvedor Júnior",
+        #"Python Junior",
+        #"Analista de Sistema Júnior",
+        #"Analista de Suporte Júnior"
         ]
+
+    logging.info(f"Buscando {len(cargos)} cargos: {', '.join(cargos)}")
 
     vagas_encontradas = []
 
@@ -220,24 +256,26 @@ if __name__ == "__main__":
     for coluna in colunas_nulos:
         tabela_vagas[coluna] = tabela_vagas[coluna].fillna("Não informado") 
 
-    caminho_csv = pasta_projeto / "reports" / "vagas_encontradas.csv"
-
+    # Lê o histórico de execuções anteriores, se existir, para acumular os
+    # resultados entre execuções em vez de sobrescrever a cada rodada
     if caminho_csv.exists():
         dados_antigos = pd.read_csv(caminho_csv, sep=";", encoding="utf-8-sig", parse_dates=["Data"], date_format='%d/%m/%Y')
     else:
         dados_antigos = pd.DataFrame(columns=tabela_vagas.columns)
 
+    # Junta o histórico já salvo com as vagas coletadas nesta execução
     dados_finais = pd.concat([dados_antigos, tabela_vagas], ignore_index=True)
 
     # Remove vagas repetidas entre buscas de cargos diferentes, usando o
     # link como identificador único de cada vaga
     dados_finais = dados_finais.drop_duplicates(subset=["Link"])
 
-    print(f"Quantidade de novas vagas adicionadas: {len(dados_finais) - len(dados_antigos)}")
-    
     dados_finais.to_csv(caminho_csv, index=False, sep=";", encoding="utf-8-sig", date_format='%d/%m/%Y')
 
-    print(f"Total de vagas encontradas: {len(dados_finais)}")
+    logging.info(f"Arquivo CSV salvo em: {caminho_csv}")
+    logging.info(f"Vagas novas nesta execução: {len(dados_finais) - len(dados_antigos)}")
+    logging.info(f"Total acumulado de vagas: {len(dados_finais)}")
+    logging.info("Execução finalizada com sucesso")
+    logging.info("=" * 60)
+
     driver.quit()
-
-
