@@ -6,19 +6,26 @@ env/
 # Cache Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
-# Jupyter
+# Jupyter Notebooks e checkpoints (evita versionar rascunhos ou testes locais)
 .ipynb_checkpoints/
+*.ipynb
 
-# VSCode
+# Configurações de IDEs (VSCode, PyCharm, etc.)
 .vscode/
+.idea/
 
-# Variáveis de ambiente
+# Variáveis de ambiente e arquivos sensíveis
 .env
 
-# Dados gerados (remova o comentário abaixo se preferir não versionar os CSVs de resultado)
-# *.csv
+# Arquivos de dados e logs gerados pela automação
+reports/*.csv
+logs/*.log
+*.csv
+*.log
 
-# Sistema operacional
+# Arquivos do sistema operacional
 .DS_Store
 Thumbs.db

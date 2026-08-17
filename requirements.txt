@@ -1,4 +1,3 @@
-selenium
-webdriver-manager
-pandas
-jupyter
+selenium==4.18.1
+webdriver-manager==4.0.1
+pandas==2.2.1

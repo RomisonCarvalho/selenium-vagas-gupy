@@ -42,3 +42,41 @@
 2026-08-15 01:01:26,732 - INFO - Total acumulado de vagas: 12
 2026-08-15 01:01:26,733 - INFO - Execução finalizada com sucesso
 2026-08-15 01:01:26,733 - INFO - ============================================================
+2026-08-15 03:35:57,757 - INFO - ============================================================
+2026-08-15 03:35:57,757 - INFO - Início da execução
+2026-08-15 03:35:57,757 - INFO - ====== WebDriver manager ======
+2026-08-15 03:35:58,365 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-08-15 03:36:01,296 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
+2026-08-15 03:36:12,220 - INFO - Para o cargo 'Estágio TI' não foram encontradas vagas ou a página falhou.
+2026-08-15 03:36:12,220 - INFO - Aviso: Tempo limite atingido para o cargo Estágio TI.
+2026-08-15 03:36:22,983 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
+2026-08-15 03:36:22,983 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
+2026-08-15 03:36:35,494 - INFO - Para o cargo 'Python Junior' não foram encontradas vagas ou a página falhou.
+2026-08-15 03:36:35,494 - INFO - Aviso: Tempo limite atingido para o cargo Python Junior.
+2026-08-15 03:36:37,238 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
+2026-08-15 03:36:37,238 - INFO - Vagas novas nesta execução: 0
+2026-08-15 03:36:37,238 - INFO - Total acumulado de vagas: 12
+2026-08-15 03:36:37,238 - INFO - Execução finalizada com sucesso
+2026-08-15 03:36:37,238 - INFO - ============================================================
+2026-08-17 08:15:04,846 - INFO - ============================================================
+2026-08-17 08:15:04,847 - INFO - Início da execução
+2026-08-17 08:15:04,847 - INFO - ====== WebDriver manager ======
+2026-08-17 08:15:07,065 - INFO - Get LATEST chromedriver version for google-chrome
+2026-08-17 08:15:07,728 - INFO - Get LATEST chromedriver version for google-chrome
+2026-08-17 08:15:08,578 - INFO - WebDriver version 151.0.7922.138 selected
+2026-08-17 08:15:08,584 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.138/win64/chromedriver-win64.zip
+2026-08-17 08:15:08,584 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.138/win64/chromedriver-win64.zip
+2026-08-17 08:15:08,889 - INFO - Driver downloading response is 200
+2026-08-17 08:15:10,593 - INFO - Driver has been saved in cache [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138]
+2026-08-17 08:15:14,970 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
+2026-08-17 08:15:26,045 - INFO - Para o cargo 'Estágio TI' não foram encontradas vagas ou a página falhou.
+2026-08-17 08:15:26,045 - INFO - Aviso: Tempo limite atingido para o cargo Estágio TI.
+2026-08-17 08:15:37,031 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
+2026-08-17 08:15:37,031 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
+2026-08-17 08:15:49,799 - INFO - Para o cargo 'Python Junior' não foram encontradas vagas ou a página falhou.
+2026-08-17 08:15:49,799 - INFO - Aviso: Tempo limite atingido para o cargo Python Junior.
+2026-08-17 08:15:53,049 - INFO - Arquivo CSV salvo em: C:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
+2026-08-17 08:15:53,049 - INFO - Vagas novas nesta execução: 12
+2026-08-17 08:15:53,050 - INFO - Total acumulado de vagas: 29
+2026-08-17 08:15:53,050 - INFO - Execução finalizada com sucesso
+2026-08-17 08:15:53,050 - INFO - ============================================================

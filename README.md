@@ -19,10 +19,10 @@ Automatizar a busca de oportunidades de emprego no Gupy para diferentes cargos d
 
 ## Funcionalidades
 
-- [x] Buscar vagas por cargo/palavra-chave no Gupy por meio de URL parametrizada
-- [x] Filtrar apenas vagas com modelo de trabalho remoto
-- [x] Buscar múltiplos cargos em uma única execução
-- [x] Extrair informações das vagas:
+- [X] Buscar vagas por cargo/palavra-chave no Gupy por meio de URL parametrizada
+- [X] Filtrar apenas vagas com modelo de trabalho remoto
+- [X] Buscar múltiplos cargos em uma única execução
+- [X] Extrair informações das vagas:
   - Cargo pesquisado
   - Título
   - Empresa
@@ -32,18 +32,18 @@ Automatizar a busca de oportunidades de emprego no Gupy para diferentes cargos d
   - Afirmativa para PcD
   - Data de publicação
   - Link
-- [x] Navegar automaticamente por todas as páginas de resultados
-- [x] Utilizar esperas explícitas com `WebDriverWait`
-- [x] Tratar timeouts e buscas sem resultados
-- [x] Tratar valores ausentes e datas inválidas sem interromper a execução
-- [x] Organizar os resultados em um DataFrame
-- [x] Acumular resultados entre diferentes execuções
-- [x] Remover vagas duplicadas utilizando o link como identificador
-- [x] Exportar os resultados para CSV
-- [x] Registrar as execuções em arquivo de log
-- [x] Executar o navegador em modo headless
-- [x] Fechar o navegador com segurança utilizando `try/finally`
-- [x] Permitir execução periódica pelo Agendador de Tarefas do Windows
+- [X] Navegar automaticamente por todas as páginas de resultados
+- [X] Utilizar esperas explícitas com `WebDriverWait`
+- [X] Tratar timeouts e buscas sem resultados
+- [X] Tratar valores ausentes e datas inválidas sem interromper a execução
+- [X] Organizar os resultados em um DataFrame
+- [X] Acumular resultados entre diferentes execuções
+- [X] Remover vagas duplicadas utilizando o link como identificador
+- [X] Exportar os resultados para CSV
+- [X] Registrar as execuções em arquivo de log
+- [X] Executar o navegador em modo headless
+- [X] Fechar o navegador com segurança utilizando `try/finally`
+- [X] Permitir execução periódica pelo Agendador de Tarefas do Windows
 
 ## Cargos pesquisados
 
@@ -62,17 +62,17 @@ Os cargos podem ser alterados diretamente na lista `cargos` do script.
 
 Os resultados são armazenados nas seguintes colunas:
 
-| Coluna | Descrição |
-|---|---|
-| `Cargo Buscado` | Termo utilizado na busca |
-| `Titulo` | Título da vaga |
-| `Empresa` | Empresa responsável pela vaga |
-| `Local` | Localização informada pela vaga |
-| `Modelo` | Modelo de trabalho |
-| `Tipo da Vaga` | Tipo de contratação/oportunidade |
+| Coluna                  | Descrição                                 |
+| ----------------------- | ------------------------------------------- |
+| `Cargo Buscado`       | Termo utilizado na busca                    |
+| `Titulo`              | Título da vaga                             |
+| `Empresa`             | Empresa responsável pela vaga              |
+| `Local`               | Localização informada pela vaga           |
+| `Modelo`              | Modelo de trabalho                          |
+| `Tipo da Vaga`        | Tipo de contratação/oportunidade          |
 | `Afirmativa para PcD` | Indicação de vaga também destinada a PcD |
-| `Data` | Data de publicação da vaga |
-| `Link` | Link da vaga no Gupy |
+| `Data`                | Data de publicação da vaga                |
+| `Link`                | Link da vaga no Gupy                        |
 
 ## Organização dos dados
 
@@ -103,13 +103,13 @@ O arquivo de log registra as execuções com data e hora, incluindo informaçõe
 ### 1. Clone o repositório
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/RomisonCarvalho/selenium-vagas-gupy.git
 ```
 
 Entre na pasta do projeto:
 
 ```bash
-cd <PASTA_DO_PROJETO>
+cd selenium-vagas-gupy
 ```
 
 ### 2. Crie um ambiente virtual

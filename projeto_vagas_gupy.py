@@ -42,11 +42,11 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
         informações de uma vaga (Título, Empresa, Local, Modelo, Tipo, Data, Link).
         Retorna uma lista vazia se nenhuma vaga for encontrada ou houver timeout.
     """
+
     # Monta a URL de busca já com o cargo e o filtro de modelo de trabalho
     nome_vaga = quote(termo)
 
-    # Filtra apenas vagas com modelo de trabalho remoto; "remote" não precisa
-    # de quote() por não ter espaço nem acento
+    # Filtra apenas vagas com modelo de trabalho remoto; "remote"
     filtro_modelo = "remote"
 
     link_vaga = f"https://portal.gupy.io/job-search/term={nome_vaga}&workplaceTypes[]={filtro_modelo}"
@@ -57,8 +57,7 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
 
     # Percorre todas as páginas de resultado até não existir mais próxima página
     while True:
-        try:
-        
+        try:       
             try:
                 # Espera os cards de vaga aparecerem; se nenhum aparecer a tempo, considera
                 # que o cargo não teve resultado e devolve o que já foi coletado até aqui
@@ -101,7 +100,7 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
                     "Presencial",
                     "Híbrido",
                     "Remoto"
-                    ]
+                ]
 
                 tipos_vaga = [
                     "Estágio",
@@ -112,7 +111,7 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
                     "Pessoa Jurídica",
                     "Trainee",
                     "Sócio"
-                    ]
+                ]
 
                 elementos_span = vaga.find_elements(By.TAG_NAME, "span")
 
@@ -142,7 +141,7 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
                     "Afirmativa para PcD": pcd_encontrado,
                     "Data": data_vaga_publicada,
                     "Link": link
-                    }
+                }
 
                 lista_vagas.append(dic_vagas)
 
@@ -190,10 +189,10 @@ if __name__ == "__main__":
     # Registra as execuções em arquivo (com data/hora de cada linha), já que o
     # script roda de forma automática e sem supervisão via Agendador de Tarefas
     logging.basicConfig(
-    filename=caminho_log,
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    encoding="utf-8-sig"
+        filename=caminho_log,
+        level=logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(message)s",
+        encoding="utf-8"
     )
 
     # Separador visual no log, facilitando identificar onde cada execução começa
@@ -230,7 +229,7 @@ if __name__ == "__main__":
             "Python Junior",
             "Analista de Sistema Júnior",
             "Analista de Suporte Júnior"
-            ]
+        ]
 
         logging.info(f"Buscando {len(cargos)} cargos: {', '.join(cargos)}")
 
@@ -247,15 +246,15 @@ if __name__ == "__main__":
 
         # Colunas esperadas no DataFrame
         colunas = [
-        "Cargo Buscado",
-        "Titulo",
-        "Empresa",
-        "Local",
-        "Modelo",
-        "Tipo da Vaga",
-        "Afirmativa para PcD",
-        "Data",
-        "Link"
+            "Cargo Buscado",
+            "Titulo",
+            "Empresa",
+            "Local",
+            "Modelo",
+            "Tipo da Vaga",
+            "Afirmativa para PcD",
+            "Data",
+            "Link"
         ]
 
         # Transformar os resultados em DataFrame
