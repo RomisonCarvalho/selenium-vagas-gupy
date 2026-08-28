@@ -20,6 +20,8 @@ from urllib.parse import quote
 from pathlib import Path
 import pandas as pd
 import logging
+import requests
+
 
 
 ## 2. Busca, extração e paginação
@@ -300,12 +302,72 @@ if __name__ == "__main__":
 
         # Exporta o histórico atualizado
         df_final.to_csv(caminho_csv, index=False, sep=";", encoding="utf-8-sig", date_format="%d/%m/%Y")
+       
+        df_api = df_vagas.rename(columns={
+            "Cargo Buscado": "cargo_buscado",
+            "Titulo": "titulo",
+            "Empresa": "empresa",
+            "Local": "local",
+            "Modelo": "modelo",
+            "Tipo da Vaga": "tipo_vaga",
+            "Afirmativa para PcD": "afirmativa_pcd",
+            "Data": "data",
+            "Link": "link"
+        })
 
+        df_api["data"] = df_api["data"].dt.strftime("%Y-%m-%d")
+
+        url = r"http://127.0.0.1:8000/vagas/"
+
+        vagas_novas_api = 0
+        vagas_duplicadas = 0
+        erros_validacao = 0
+        erros_conexao = 0
+
+        for index, dados_da_linha in df_api.iterrows():
+            dados = {
+                "cargo_buscado": dados_da_linha["cargo_buscado"],
+                "titulo": dados_da_linha["titulo"],
+                "empresa": dados_da_linha["empresa"],
+                "local": dados_da_linha["local"],
+                "modelo": dados_da_linha["modelo"],
+                "tipo_vaga": dados_da_linha["tipo_vaga"],
+                "afirmativa_pcd": dados_da_linha["afirmativa_pcd"],
+                "data": dados_da_linha["data"],
+                "link": dados_da_linha["link"],
+            }
+
+            try:
+                requisicao = requests.post(url, json=dados)
+            except requests.exceptions.ConnectionError as e:
+                logging.error(f"Erro ao processar a linha {index} - {dados_da_linha["link"]}: {e}")
+                erros_conexao += 1
+                continue
+
+            status = requisicao.status_code
+
+            if status == 200:
+                vagas_novas_api += 1
+            elif status == 409:
+                vagas_duplicadas += 1
+                logging.warning(f"Vaga duplicada: {dados_da_linha['link']}")
+            elif status == 422:
+                erros_validacao += 1
+                logging.error(f"Erro de validação: {requisicao.json()}")
+            else:
+                logging.warning(f"Status inesperado ({status}) para o link {dados_da_linha['link']}: {requisicao.json()}")
+            
+            
         logging.info(f"Arquivo CSV salvo em: {caminho_csv}")
         logging.info(f"Vagas novas nesta execução: {vagas_novas}")
+        logging.info(f"Vagas novas nesta execução encaminhadas para a API: {vagas_novas_api}")
         logging.info(f"Total acumulado de vagas: {len(df_final)}")
+        logging.info(f"Total de vagas duplicadas: {vagas_duplicadas}")
+        logging.info(f"Total de erros de validação: {erros_validacao}")
+        logging.info(f"Total de erros de conexão: {erros_conexao}")
         logging.info("Execução finalizada com sucesso")
         logging.info("=" * 60)
 
+        
     finally:
         driver.quit()
