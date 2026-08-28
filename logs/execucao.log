@@ -1,503 +1,136 @@
-﻿2026-08-15 00:34:05,827 - INFO - ============================================================
-2026-08-15 00:34:05,827 - INFO - Início da execução
-2026-08-15 00:34:05,827 - INFO - ====== WebDriver manager ======
-2026-08-15 00:34:06,375 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-15 00:34:09,879 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-15 00:34:20,844 - INFO - Para o cargo 'Estágio TI' não foram encontradas vagas ou a página falhou.
-2026-08-15 00:34:20,844 - INFO - Aviso: Tempo limite atingido para o cargo Estágio TI.
-2026-08-15 00:34:31,537 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-15 00:34:31,537 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-15 00:34:43,924 - INFO - Para o cargo 'Python Junior' não foram encontradas vagas ou a página falhou.
-2026-08-15 00:34:43,925 - INFO - Aviso: Tempo limite atingido para o cargo Python Junior.
-2026-08-15 00:34:45,887 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-15 00:34:45,888 - INFO - Vagas novas nesta execução: 12
-2026-08-15 00:34:45,888 - INFO - Total acumulado de vagas: 12
-2026-08-15 00:58:53,114 - INFO - ============================================================
-2026-08-15 00:58:53,114 - INFO - Início da execução
-2026-08-15 00:58:53,114 - INFO - ====== WebDriver manager ======
-2026-08-15 00:58:54,067 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-15 00:58:57,173 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-15 00:59:08,104 - INFO - Para o cargo 'Estágio TI' não foram encontradas vagas ou a página falhou.
-2026-08-15 00:59:08,104 - INFO - Aviso: Tempo limite atingido para o cargo Estágio TI.
-2026-08-15 00:59:18,800 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-15 00:59:18,800 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-15 00:59:31,479 - INFO - Para o cargo 'Python Junior' não foram encontradas vagas ou a página falhou.
-2026-08-15 00:59:31,479 - INFO - Aviso: Tempo limite atingido para o cargo Python Junior.
-2026-08-15 00:59:33,237 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-15 00:59:33,237 - INFO - Vagas novas nesta execução: 0
-2026-08-15 00:59:33,238 - INFO - Total acumulado de vagas: 12
-2026-08-15 01:00:46,961 - INFO - ============================================================
-2026-08-15 01:00:46,961 - INFO - Início da execução
-2026-08-15 01:00:46,961 - INFO - ====== WebDriver manager ======
-2026-08-15 01:00:47,570 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-15 01:00:50,885 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-15 01:01:01,781 - INFO - Para o cargo 'Estágio TI' não foram encontradas vagas ou a página falhou.
-2026-08-15 01:01:01,781 - INFO - Aviso: Tempo limite atingido para o cargo Estágio TI.
-2026-08-15 01:01:12,434 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-15 01:01:12,435 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-15 01:01:24,833 - INFO - Para o cargo 'Python Junior' não foram encontradas vagas ou a página falhou.
-2026-08-15 01:01:24,833 - INFO - Aviso: Tempo limite atingido para o cargo Python Junior.
-2026-08-15 01:01:26,732 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-15 01:01:26,732 - INFO - Vagas novas nesta execução: 0
-2026-08-15 01:01:26,732 - INFO - Total acumulado de vagas: 12
-2026-08-15 01:01:26,733 - INFO - Execução finalizada com sucesso
-2026-08-15 01:01:26,733 - INFO - ============================================================
-2026-08-15 03:35:57,757 - INFO - ============================================================
-2026-08-15 03:35:57,757 - INFO - Início da execução
-2026-08-15 03:35:57,757 - INFO - ====== WebDriver manager ======
-2026-08-15 03:35:58,365 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-15 03:36:01,296 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-15 03:36:12,220 - INFO - Para o cargo 'Estágio TI' não foram encontradas vagas ou a página falhou.
-2026-08-15 03:36:12,220 - INFO - Aviso: Tempo limite atingido para o cargo Estágio TI.
-2026-08-15 03:36:22,983 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-15 03:36:22,983 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-15 03:36:35,494 - INFO - Para o cargo 'Python Junior' não foram encontradas vagas ou a página falhou.
-2026-08-15 03:36:35,494 - INFO - Aviso: Tempo limite atingido para o cargo Python Junior.
-2026-08-15 03:36:37,238 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-15 03:36:37,238 - INFO - Vagas novas nesta execução: 0
-2026-08-15 03:36:37,238 - INFO - Total acumulado de vagas: 12
-2026-08-15 03:36:37,238 - INFO - Execução finalizada com sucesso
-2026-08-15 03:36:37,238 - INFO - ============================================================
-2026-08-17 08:15:04,846 - INFO - ============================================================
-2026-08-17 08:15:04,847 - INFO - Início da execução
-2026-08-17 08:15:04,847 - INFO - ====== WebDriver manager ======
-2026-08-17 08:15:07,065 - INFO - Get LATEST chromedriver version for google-chrome
-2026-08-17 08:15:07,728 - INFO - Get LATEST chromedriver version for google-chrome
-2026-08-17 08:15:08,578 - INFO - WebDriver version 151.0.7922.138 selected
-2026-08-17 08:15:08,584 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.138/win64/chromedriver-win64.zip
-2026-08-17 08:15:08,584 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.138/win64/chromedriver-win64.zip
-2026-08-17 08:15:08,889 - INFO - Driver downloading response is 200
-2026-08-17 08:15:10,593 - INFO - Driver has been saved in cache [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138]
-2026-08-17 08:15:14,970 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-17 08:15:26,045 - INFO - Para o cargo 'Estágio TI' não foram encontradas vagas ou a página falhou.
-2026-08-17 08:15:26,045 - INFO - Aviso: Tempo limite atingido para o cargo Estágio TI.
-2026-08-17 08:15:37,031 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-17 08:15:37,031 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-17 08:15:49,799 - INFO - Para o cargo 'Python Junior' não foram encontradas vagas ou a página falhou.
-2026-08-17 08:15:49,799 - INFO - Aviso: Tempo limite atingido para o cargo Python Junior.
-2026-08-17 08:15:53,049 - INFO - Arquivo CSV salvo em: C:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-17 08:15:53,049 - INFO - Vagas novas nesta execução: 12
-2026-08-17 08:15:53,050 - INFO - Total acumulado de vagas: 29
-2026-08-17 08:15:53,050 - INFO - Execução finalizada com sucesso
-2026-08-17 08:15:53,050 - INFO - ============================================================
-2026-08-24 08:15:03,306 - INFO - ============================================================
-2026-08-24 08:15:03,307 - INFO - Início da execução
-2026-08-24 08:15:03,307 - INFO - ====== WebDriver manager ======
-2026-08-24 08:15:04,984 - INFO - Get LATEST chromedriver version for google-chrome
-2026-08-24 08:15:05,623 - INFO - Get LATEST chromedriver version for google-chrome
-2026-08-24 08:15:05,852 - INFO - WebDriver version 151.0.7922.138 selected
-2026-08-24 08:15:05,857 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.138/win64/chromedriver-win64.zip
-2026-08-24 08:15:05,857 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.138/win64/chromedriver-win64.zip
-2026-08-24 08:15:06,150 - INFO - Driver downloading response is 200
-2026-08-24 08:15:07,801 - INFO - Driver has been saved in cache [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138]
-2026-08-24 08:15:11,744 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-24 08:15:22,570 - INFO - Para o cargo 'Estágio TI' não foram encontradas vagas ou a página falhou.
-2026-08-24 08:15:22,571 - INFO - Aviso: Tempo limite atingido para o cargo Estágio TI.
-2026-08-24 08:15:33,204 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-24 08:15:33,204 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-24 08:15:38,985 - INFO - Arquivo CSV salvo em: C:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-24 08:15:38,985 - INFO - Vagas novas nesta execução: 11
-2026-08-24 08:15:38,985 - INFO - Total acumulado de vagas: 40
-2026-08-24 08:15:38,985 - INFO - Execução finalizada com sucesso
-2026-08-24 08:15:38,986 - INFO - ============================================================
-2026-08-27 16:58:02,519 - INFO - ============================================================
-2026-08-27 16:58:02,519 - INFO - Início da execução
-2026-08-27 16:58:02,519 - INFO - ====== WebDriver manager ======
-2026-08-27 16:58:03,645 - INFO - Get LATEST chromedriver version for google-chrome
-2026-08-27 16:58:04,251 - INFO - Get LATEST chromedriver version for google-chrome
-2026-08-27 16:58:04,337 - INFO - WebDriver version 151.0.7922.138 selected
-2026-08-27 16:58:04,345 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.138/win64/chromedriver-win64.zip
-2026-08-27 16:58:04,345 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.138/win64/chromedriver-win64.zip
-2026-08-27 16:58:04,640 - INFO - Driver downloading response is 200
-2026-08-27 16:58:06,341 - INFO - Driver has been saved in cache [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138]
-2026-08-27 16:58:09,922 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 16:58:22,873 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 16:58:22,873 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 16:58:28,403 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 16:58:28,403 - INFO - Vagas novas nesta execução: 2
-2026-08-27 16:58:28,403 - INFO - Total acumulado de vagas: 42
-2026-08-27 16:58:28,403 - INFO - Execução finalizada com sucesso
-2026-08-27 16:58:28,403 - INFO - ============================================================
-2026-08-27 17:58:20,606 - INFO - ============================================================
-2026-08-27 17:58:20,606 - INFO - Início da execução
-2026-08-27 17:58:20,606 - INFO - ====== WebDriver manager ======
-2026-08-27 17:58:21,236 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 17:58:24,043 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 17:58:37,143 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 17:58:37,143 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 17:58:44,047 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 17:58:44,048 - INFO - Vagas novas nesta execução: 0
-2026-08-27 17:58:44,048 - INFO - Total acumulado de vagas: 42
-2026-08-27 17:58:44,048 - INFO - Execução finalizada com sucesso
-2026-08-27 17:58:44,048 - INFO - ============================================================
-2026-08-27 17:59:36,198 - INFO - ============================================================
-2026-08-27 17:59:36,198 - INFO - Início da execução
-2026-08-27 17:59:36,198 - INFO - ====== WebDriver manager ======
-2026-08-27 17:59:36,755 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 17:59:39,791 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 17:59:52,523 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 17:59:52,523 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 17:59:59,512 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 17:59:59,512 - INFO - Vagas novas nesta execução: 0
-2026-08-27 17:59:59,512 - INFO - Total acumulado de vagas: 42
-2026-08-27 17:59:59,512 - INFO - Execução finalizada com sucesso
-2026-08-27 17:59:59,512 - INFO - ============================================================
-2026-08-27 21:34:26,085 - INFO - ============================================================
-2026-08-27 21:34:26,085 - INFO - Início da execução
-2026-08-27 21:34:26,085 - INFO - ====== WebDriver manager ======
-2026-08-27 21:34:26,737 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 21:34:30,349 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 21:34:43,177 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 21:34:43,177 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 21:34:48,443 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 21:34:48,443 - INFO - Vagas novas nesta execução: 0
-2026-08-27 21:34:48,443 - INFO - Total acumulado de vagas: 42
-2026-08-27 21:34:48,444 - INFO - Execução finalizada com sucesso
-2026-08-27 21:34:48,444 - INFO - ============================================================
-2026-08-27 21:36:05,759 - INFO - ============================================================
-2026-08-27 21:36:05,759 - INFO - Início da execução
-2026-08-27 21:36:05,760 - INFO - ====== WebDriver manager ======
-2026-08-27 21:36:06,348 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 21:36:09,451 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 21:36:22,136 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 21:36:22,136 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 21:36:27,936 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 21:36:27,936 - INFO - Vagas novas nesta execução: 0
-2026-08-27 21:36:27,937 - INFO - Total acumulado de vagas: 42
-2026-08-27 21:36:27,937 - INFO - Execução finalizada com sucesso
-2026-08-27 21:36:27,937 - INFO - ============================================================
-2026-08-27 22:19:54,467 - INFO - ============================================================
-2026-08-27 22:19:54,467 - INFO - Início da execução
-2026-08-27 22:19:54,467 - INFO - ====== WebDriver manager ======
-2026-08-27 22:19:55,054 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 22:19:58,099 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 22:20:10,850 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 22:20:10,850 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 22:23:32,625 - INFO - ============================================================
-2026-08-27 22:23:32,625 - INFO - Início da execução
-2026-08-27 22:23:32,625 - INFO - ====== WebDriver manager ======
-2026-08-27 22:23:33,207 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 22:23:37,636 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 22:23:50,473 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 22:23:50,473 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 22:23:56,164 - INFO - Vaga duplicada: 1
-2026-08-27 22:23:56,169 - INFO - Vaga duplicada: 2
-2026-08-27 22:23:56,178 - INFO - Vaga duplicada: 3
-2026-08-27 22:23:56,186 - INFO - Vaga duplicada: 4
-2026-08-27 22:23:56,194 - INFO - Vaga duplicada: 5
-2026-08-27 22:23:56,201 - INFO - Vaga duplicada: 6
-2026-08-27 22:23:56,209 - INFO - Vaga duplicada: 7
-2026-08-27 22:23:56,217 - INFO - Vaga duplicada: 8
-2026-08-27 22:23:56,223 - INFO - Vaga duplicada: 9
-2026-08-27 22:23:56,230 - INFO - Vaga duplicada: 10
-2026-08-27 22:23:56,234 - INFO - Vaga duplicada: 11
-2026-08-27 22:23:56,238 - INFO - Vaga duplicada: 12
-2026-08-27 22:23:56,244 - INFO - Vaga duplicada: 13
-2026-08-27 22:23:56,248 - INFO - Vaga duplicada: 14
-2026-08-27 22:23:56,252 - INFO - Vaga duplicada: 15
-2026-08-27 22:23:56,258 - INFO - Vaga duplicada: 16
-2026-08-27 22:23:56,263 - INFO - Vaga duplicada: 17
-2026-08-27 22:23:56,268 - INFO - Vaga duplicada: 18
-2026-08-27 22:23:56,269 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 22:23:56,269 - INFO - Vagas novas nesta execução: 0
-2026-08-27 22:23:56,270 - INFO - Total acumulado de vagas: 18
-2026-08-27 22:23:56,270 - INFO - Execução finalizada com sucesso
-2026-08-27 22:23:56,270 - INFO - ============================================================
-2026-08-27 22:30:35,142 - INFO - ============================================================
-2026-08-27 22:30:35,142 - INFO - Início da execução
-2026-08-27 22:30:35,142 - INFO - ====== WebDriver manager ======
-2026-08-27 22:30:35,718 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 22:30:38,946 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 22:30:51,660 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 22:30:51,660 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 22:30:58,187 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 22:30:58,187 - INFO - Vagas novas nesta execução: 18
-2026-08-27 22:30:58,188 - INFO - Total acumulado de vagas: 18
-2026-08-27 22:30:58,188 - INFO - Execução finalizada com sucesso
-2026-08-27 22:30:58,188 - INFO - ============================================================
-2026-08-27 22:32:19,300 - INFO - ============================================================
-2026-08-27 22:32:19,300 - INFO - Início da execução
-2026-08-27 22:32:19,300 - INFO - ====== WebDriver manager ======
-2026-08-27 22:32:19,887 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 22:32:23,169 - INFO - Buscando 7 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior, Java Junior
-2026-08-27 22:32:35,961 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 22:32:35,961 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 22:32:52,017 - INFO - Para o cargo 'Java Junior' não foram encontradas vagas ou a página falhou.
-2026-08-27 22:32:52,017 - INFO - Aviso: Tempo limite atingido para o cargo Java Junior.
-2026-08-27 22:32:52,119 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 22:32:52,119 - INFO - Vagas novas nesta execução: 0
-2026-08-27 22:32:52,119 - INFO - Total acumulado de vagas: 18
-2026-08-27 22:32:52,119 - INFO - Execução finalizada com sucesso
-2026-08-27 22:32:52,119 - INFO - ============================================================
-2026-08-27 22:39:40,004 - INFO - ============================================================
-2026-08-27 22:39:40,004 - INFO - Início da execução
-2026-08-27 22:39:40,004 - INFO - ====== WebDriver manager ======
-2026-08-27 22:39:40,527 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 22:39:43,553 - INFO - Buscando 7 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior, Java
-2026-08-27 22:39:56,367 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 22:39:56,367 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 22:40:26,058 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 22:40:26,058 - INFO - Vagas novas nesta execução: 234
-2026-08-27 22:40:26,058 - INFO - Total acumulado de vagas: 126
-2026-08-27 22:40:26,058 - INFO - Execução finalizada com sucesso
-2026-08-27 22:40:26,059 - INFO - ============================================================
-2026-08-27 22:41:53,290 - INFO - ============================================================
-2026-08-27 22:41:53,290 - INFO - Início da execução
-2026-08-27 22:41:53,291 - INFO - ====== WebDriver manager ======
-2026-08-27 22:41:53,855 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 22:41:56,897 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 22:42:09,671 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 22:42:09,671 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 22:42:15,454 - INFO - Vaga duplicada: Estágio TI
-2026-08-27 22:42:15,459 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:42:15,466 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:42:15,497 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:42:15,506 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:42:15,511 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:42:15,517 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:42:15,524 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:42:15,536 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:42:15,546 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:42:15,553 - INFO - Vaga duplicada: Python Junior
-2026-08-27 22:42:15,562 - INFO - Vaga duplicada: Analista de Sistema Júnior
-2026-08-27 22:42:15,567 - INFO - Vaga duplicada: Analista de Suporte Júnior
-2026-08-27 22:42:15,575 - INFO - Vaga duplicada: Analista de Suporte Júnior
-2026-08-27 22:42:15,585 - INFO - Vaga duplicada: Analista de Suporte Júnior
-2026-08-27 22:42:15,591 - INFO - Vaga duplicada: Analista de Suporte Júnior
-2026-08-27 22:42:15,634 - INFO - Vaga duplicada: Analista de Suporte Júnior
-2026-08-27 22:42:15,646 - INFO - Vaga duplicada: Analista de Suporte Júnior
-2026-08-27 22:42:15,646 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 22:42:15,646 - INFO - Vagas novas nesta execução: 0
-2026-08-27 22:42:15,646 - INFO - Total acumulado de vagas: 126
-2026-08-27 22:42:15,646 - INFO - Execução finalizada com sucesso
-2026-08-27 22:42:15,647 - INFO - ============================================================
-2026-08-27 22:46:15,186 - INFO - ============================================================
-2026-08-27 22:46:15,186 - INFO - Início da execução
-2026-08-27 22:46:15,186 - INFO - ====== WebDriver manager ======
-2026-08-27 22:46:15,919 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 22:46:19,399 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 22:46:32,134 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 22:46:32,134 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 22:46:37,310 - INFO - Vaga duplicada: Estágio TI
-2026-08-27 22:46:37,314 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:46:37,320 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:46:37,327 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:46:37,331 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:46:37,342 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:46:37,348 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:46:37,353 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:46:37,357 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:46:37,361 - INFO - Vaga duplicada: Desenvolvedor Júnior
-2026-08-27 22:46:37,391 - INFO - Vaga duplicada: Python Junior
-2026-08-27 22:46:37,394 - INFO - Vaga duplicada: Analista de Sistema Júnior
-2026-08-27 22:46:37,398 - INFO - Vaga duplicada: Analista de Suporte Júnior
-2026-08-27 22:46:37,403 - INFO - Vaga duplicada: Analista de Suporte Júnior
-2026-08-27 22:46:37,407 - INFO - Vaga duplicada: Analista de Suporte Júnior
-2026-08-27 22:46:37,411 - INFO - Vaga duplicada: Analista de Suporte Júnior
-2026-08-27 22:46:37,416 - INFO - Vaga duplicada: Analista de Suporte Júnior
-2026-08-27 22:46:37,421 - INFO - Vaga duplicada: Analista de Suporte Júnior
-2026-08-27 22:46:37,421 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 22:46:37,421 - INFO - Vagas novas nesta execução: 0
-2026-08-27 22:46:37,421 - INFO - Total acumulado de vagas: 126
-2026-08-27 22:46:37,421 - INFO - Execução finalizada com sucesso
-2026-08-27 22:46:37,421 - INFO - ============================================================
-2026-08-27 22:54:07,496 - INFO - ============================================================
-2026-08-27 22:54:07,496 - INFO - Início da execução
-2026-08-27 22:54:07,496 - INFO - ====== WebDriver manager ======
-2026-08-27 22:54:08,064 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 22:54:11,463 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 22:54:24,112 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 22:54:24,112 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 22:54:30,039 - INFO - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTIyMjAwODMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,044 - INFO - Vaga duplicada: https://yduqstech.gupy.io/job/eyJqb2JJZCI6MTIxODEwMDAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,049 - INFO - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyMDQ4MDUsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,056 - INFO - Vaga duplicada: https://construmarket.gupy.io/job/eyJqb2JJZCI6MTIyMTI1OTcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,063 - INFO - Vaga duplicada: https://evoluservices.gupy.io/job/eyJqb2JJZCI6MTIxODEwNDgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,073 - INFO - Vaga duplicada: https://evoluservices.gupy.io/job/eyJqb2JJZCI6MTIxODA5OTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,088 - INFO - Vaga duplicada: https://cuponomia.gupy.io/job/eyJqb2JJZCI6MTE5ODc0NzgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,099 - INFO - Vaga duplicada: https://alaresinternet.gupy.io/job/eyJqb2JJZCI6NzEzNjgzOCwic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,112 - INFO - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTU5MDIyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,130 - INFO - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTUyMjY4Mywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,139 - INFO - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIxNjAyMTIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,146 - INFO - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTExMDU5MzQsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,155 - INFO - Vaga duplicada: https://wyntech.gupy.io/job/eyJqb2JJZCI6MTIzMTcxMzcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,165 - INFO - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIwOTAzMTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,170 - INFO - Vaga duplicada: https://icarotech.gupy.io/job/eyJqb2JJZCI6MTIwNDQ4OTgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,178 - INFO - Vaga duplicada: https://synvia.gupy.io/job/eyJqb2JJZCI6MTIwMjMxMzYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,183 - INFO - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTE5Mzc3MzEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,191 - INFO - Vaga duplicada: https://qualitydigital.gupy.io/job/eyJqb2JJZCI6NTUyODAyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-27 22:54:30,191 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 22:54:30,191 - INFO - Vagas novas nesta execução: 0
-2026-08-27 22:54:30,191 - INFO - Total acumulado de vagas: 126
-2026-08-27 22:54:30,191 - INFO - Execução finalizada com sucesso
-2026-08-27 22:54:30,191 - INFO - ============================================================
-2026-08-27 23:10:36,838 - INFO - ============================================================
-2026-08-27 23:10:36,839 - INFO - Início da execução
-2026-08-27 23:10:36,839 - INFO - ====== WebDriver manager ======
-2026-08-27 23:10:37,475 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 23:10:40,899 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 23:10:53,621 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 23:10:53,622 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 23:10:59,558 - INFO - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTIyMjAwODMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,564 - INFO - Vaga duplicada: https://yduqstech.gupy.io/job/eyJqb2JJZCI6MTIxODEwMDAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,568 - INFO - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyMDQ4MDUsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,571 - INFO - Vaga duplicada: https://construmarket.gupy.io/job/eyJqb2JJZCI6MTIyMTI1OTcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,575 - INFO - Vaga duplicada: https://evoluservices.gupy.io/job/eyJqb2JJZCI6MTIxODEwNDgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,579 - INFO - Vaga duplicada: https://evoluservices.gupy.io/job/eyJqb2JJZCI6MTIxODA5OTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,583 - INFO - Vaga duplicada: https://cuponomia.gupy.io/job/eyJqb2JJZCI6MTE5ODc0NzgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,586 - INFO - Vaga duplicada: https://alaresinternet.gupy.io/job/eyJqb2JJZCI6NzEzNjgzOCwic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,590 - INFO - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTU5MDIyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,597 - INFO - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTUyMjY4Mywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,602 - INFO - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIxNjAyMTIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,607 - INFO - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTExMDU5MzQsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,615 - INFO - Vaga duplicada: https://wyntech.gupy.io/job/eyJqb2JJZCI6MTIzMTcxMzcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,620 - INFO - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIwOTAzMTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,625 - INFO - Vaga duplicada: https://icarotech.gupy.io/job/eyJqb2JJZCI6MTIwNDQ4OTgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,630 - INFO - Vaga duplicada: https://synvia.gupy.io/job/eyJqb2JJZCI6MTIwMjMxMzYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,634 - INFO - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTE5Mzc3MzEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,638 - INFO - Vaga duplicada: https://qualitydigital.gupy.io/job/eyJqb2JJZCI6NTUyODAyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-27 23:10:59,638 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 23:10:59,638 - INFO - Vagas novas nesta execução: 0
-2026-08-27 23:10:59,638 - INFO - Total acumulado de vagas: 126
-2026-08-27 23:10:59,638 - INFO - Total de vagas duplicada: 18
-2026-08-27 23:10:59,638 - INFO - Execução finalizada com sucesso
-2026-08-27 23:10:59,638 - INFO - ============================================================
-2026-08-27 23:45:41,387 - INFO - ============================================================
-2026-08-27 23:45:41,387 - INFO - Início da execução
-2026-08-27 23:45:41,388 - INFO - ====== WebDriver manager ======
-2026-08-27 23:45:41,967 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 23:45:44,797 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 23:45:57,794 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 23:45:57,794 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 23:46:05,269 - INFO - Erro ao processar a linha 0: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:07,320 - INFO - Erro ao processar a linha 1: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:09,359 - INFO - Erro ao processar a linha 2: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:11,414 - INFO - Erro ao processar a linha 3: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:13,456 - INFO - Erro ao processar a linha 4: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:15,512 - INFO - Erro ao processar a linha 5: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:17,561 - INFO - Erro ao processar a linha 6: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:19,603 - INFO - Erro ao processar a linha 7: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:21,654 - INFO - Erro ao processar a linha 8: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:23,704 - INFO - Erro ao processar a linha 9: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:25,754 - INFO - Erro ao processar a linha 10: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:27,805 - INFO - Erro ao processar a linha 11: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:29,836 - INFO - Erro ao processar a linha 12: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:31,888 - INFO - Erro ao processar a linha 13: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:33,926 - INFO - Erro ao processar a linha 14: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:35,961 - INFO - Erro ao processar a linha 15: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:37,991 - INFO - Erro ao processar a linha 16: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:40,035 - INFO - Erro ao processar a linha 17: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:46:40,035 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 23:46:40,035 - INFO - Vagas novas nesta execução: 0
-2026-08-27 23:46:40,035 - INFO - Vagas novas nesta execução encaminhadas para a API: 0
-2026-08-27 23:46:40,035 - INFO - Total acumulado de vagas: 126
-2026-08-27 23:46:40,035 - INFO - Total de vagas duplicadas: 0
-2026-08-27 23:46:40,035 - INFO - Total de erros de validação: 0
-2026-08-27 23:46:40,035 - INFO - Execução finalizada com sucesso
-2026-08-27 23:46:40,035 - INFO - ============================================================
-2026-08-27 23:53:02,073 - INFO - ============================================================
-2026-08-27 23:53:02,073 - INFO - Início da execução
-2026-08-27 23:53:02,074 - INFO - ====== WebDriver manager ======
-2026-08-27 23:53:02,664 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-27 23:53:05,939 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-27 23:53:18,645 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-27 23:53:18,645 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-27 23:53:25,349 - ERROR - Erro ao processar a linha 0: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:27,397 - ERROR - Erro ao processar a linha 1: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:29,450 - ERROR - Erro ao processar a linha 2: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:31,500 - ERROR - Erro ao processar a linha 3: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:33,535 - ERROR - Erro ao processar a linha 4: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:35,578 - ERROR - Erro ao processar a linha 5: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:37,634 - ERROR - Erro ao processar a linha 6: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:39,689 - ERROR - Erro ao processar a linha 7: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:41,740 - ERROR - Erro ao processar a linha 8: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:43,791 - ERROR - Erro ao processar a linha 9: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:45,831 - ERROR - Erro ao processar a linha 10: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:47,880 - ERROR - Erro ao processar a linha 11: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:49,928 - ERROR - Erro ao processar a linha 12: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:51,981 - ERROR - Erro ao processar a linha 13: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:54,034 - ERROR - Erro ao processar a linha 14: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:56,085 - ERROR - Erro ao processar a linha 15: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:53:58,133 - ERROR - Erro ao processar a linha 16: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:54:00,174 - ERROR - Erro ao processar a linha 17: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
-2026-08-27 23:54:00,174 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-27 23:54:00,175 - INFO - Vagas novas nesta execução: 0
-2026-08-27 23:54:00,175 - INFO - Vagas novas nesta execução encaminhadas para a API: 0
-2026-08-27 23:54:00,175 - INFO - Total acumulado de vagas: 126
-2026-08-27 23:54:00,175 - INFO - Total de vagas duplicadas: 0
-2026-08-27 23:54:00,175 - INFO - Total de erros de validação: 0
-2026-08-27 23:54:00,175 - INFO - Execução finalizada com sucesso
-2026-08-27 23:54:00,175 - INFO - ============================================================
-2026-08-28 00:04:03,415 - INFO - ============================================================
-2026-08-28 00:04:03,416 - INFO - Início da execução
-2026-08-28 00:04:03,416 - INFO - ====== WebDriver manager ======
-2026-08-28 00:04:04,517 - INFO - Get LATEST chromedriver version for google-chrome
-2026-08-28 00:04:05,204 - INFO - Get LATEST chromedriver version for google-chrome
-2026-08-28 00:04:05,293 - INFO - WebDriver version 151.0.7922.138 selected
-2026-08-28 00:04:05,301 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.138/win64/chromedriver-win64.zip
-2026-08-28 00:04:05,301 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.138/win64/chromedriver-win64.zip
-2026-08-28 00:04:05,586 - INFO - Driver downloading response is 200
-2026-08-28 00:04:06,841 - INFO - Driver has been saved in cache [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138]
-2026-08-28 00:04:10,362 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-28 00:04:23,050 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-28 00:04:23,050 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-28 00:04:28,610 - WARNING - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTIyMjAwODMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,615 - WARNING - Vaga duplicada: https://yduqstech.gupy.io/job/eyJqb2JJZCI6MTIxODEwMDAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,618 - WARNING - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyMDQ4MDUsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,621 - WARNING - Vaga duplicada: https://construmarket.gupy.io/job/eyJqb2JJZCI6MTIyMTI1OTcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,625 - WARNING - Vaga duplicada: https://evoluservices.gupy.io/job/eyJqb2JJZCI6MTIxODEwNDgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,629 - WARNING - Vaga duplicada: https://evoluservices.gupy.io/job/eyJqb2JJZCI6MTIxODA5OTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,632 - WARNING - Vaga duplicada: https://cuponomia.gupy.io/job/eyJqb2JJZCI6MTE5ODc0NzgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,638 - WARNING - Vaga duplicada: https://alaresinternet.gupy.io/job/eyJqb2JJZCI6NzEzNjgzOCwic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,644 - WARNING - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTU5MDIyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,651 - WARNING - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTUyMjY4Mywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,659 - WARNING - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIxNjAyMTIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,665 - WARNING - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTExMDU5MzQsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,671 - WARNING - Vaga duplicada: https://wyntech.gupy.io/job/eyJqb2JJZCI6MTIzMTcxMzcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,677 - WARNING - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIwOTAzMTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,684 - WARNING - Vaga duplicada: https://icarotech.gupy.io/job/eyJqb2JJZCI6MTIwNDQ4OTgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,689 - WARNING - Vaga duplicada: https://synvia.gupy.io/job/eyJqb2JJZCI6MTIwMjMxMzYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,693 - WARNING - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTE5Mzc3MzEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,697 - WARNING - Vaga duplicada: https://qualitydigital.gupy.io/job/eyJqb2JJZCI6NTUyODAyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-28 00:04:28,697 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-28 00:04:28,697 - INFO - Vagas novas nesta execução: 0
-2026-08-28 00:04:28,697 - INFO - Vagas novas nesta execução encaminhadas para a API: 0
-2026-08-28 00:04:28,697 - INFO - Total acumulado de vagas: 126
-2026-08-28 00:04:28,697 - INFO - Total de vagas duplicadas: 18
-2026-08-28 00:04:28,697 - INFO - Total de erros de validação: 0
-2026-08-28 00:04:28,697 - INFO - Execução finalizada com sucesso
-2026-08-28 00:04:28,697 - INFO - ============================================================
-2026-08-28 02:47:51,313 - INFO - ============================================================
-2026-08-28 02:47:51,313 - INFO - Início da execução
-2026-08-28 02:47:51,314 - INFO - ====== WebDriver manager ======
-2026-08-28 02:47:51,967 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
-2026-08-28 02:47:55,109 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
-2026-08-28 02:48:07,651 - INFO - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
-2026-08-28 02:48:07,652 - INFO - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
-2026-08-28 02:48:13,254 - WARNING - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTIyMjAwODMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,258 - WARNING - Vaga duplicada: https://yduqstech.gupy.io/job/eyJqb2JJZCI6MTIxODEwMDAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,262 - WARNING - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyMDQ4MDUsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,267 - WARNING - Vaga duplicada: https://construmarket.gupy.io/job/eyJqb2JJZCI6MTIyMTI1OTcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,271 - WARNING - Vaga duplicada: https://evoluservices.gupy.io/job/eyJqb2JJZCI6MTIxODEwNDgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,277 - WARNING - Vaga duplicada: https://evoluservices.gupy.io/job/eyJqb2JJZCI6MTIxODA5OTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,281 - WARNING - Vaga duplicada: https://cuponomia.gupy.io/job/eyJqb2JJZCI6MTE5ODc0NzgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,285 - WARNING - Vaga duplicada: https://alaresinternet.gupy.io/job/eyJqb2JJZCI6NzEzNjgzOCwic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,288 - WARNING - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTU5MDIyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,293 - WARNING - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTUyMjY4Mywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,296 - WARNING - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIxNjAyMTIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,300 - WARNING - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTExMDU5MzQsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,304 - WARNING - Vaga duplicada: https://wyntech.gupy.io/job/eyJqb2JJZCI6MTIzMTcxMzcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,308 - WARNING - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIwOTAzMTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,311 - WARNING - Vaga duplicada: https://icarotech.gupy.io/job/eyJqb2JJZCI6MTIwNDQ4OTgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,315 - WARNING - Vaga duplicada: https://synvia.gupy.io/job/eyJqb2JJZCI6MTIwMjMxMzYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,318 - WARNING - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTE5Mzc3MzEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,322 - WARNING - Vaga duplicada: https://qualitydigital.gupy.io/job/eyJqb2JJZCI6NTUyODAyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
-2026-08-28 02:48:13,322 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
-2026-08-28 02:48:13,322 - INFO - Vagas novas nesta execução: 18
-2026-08-28 02:48:13,322 - INFO - Vagas novas nesta execução encaminhadas para a API: 0
-2026-08-28 02:48:13,322 - INFO - Total acumulado de vagas: 18
-2026-08-28 02:48:13,322 - INFO - Total de vagas duplicadas: 18
-2026-08-28 02:48:13,322 - INFO - Total de erros de validação: 0
-2026-08-28 02:48:13,322 - INFO - Total de erros de conexão: 0
-2026-08-28 02:48:13,322 - INFO - Execução finalizada com sucesso
-2026-08-28 02:48:13,322 - INFO - ============================================================
+2026-08-28 19:51:18,454 - INFO - ============================================================
+2026-08-28 19:51:18,454 - INFO - Início da execução
+2026-08-28 19:51:18,454 - INFO - ====== WebDriver manager ======
+2026-08-28 19:51:19,113 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-08-28 19:51:22,260 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
+2026-08-28 19:51:34,991 - WARNING - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
+2026-08-28 19:51:34,992 - WARNING - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
+2026-08-28 19:51:42,559 - ERROR - Erro ao processar a linha 0 - https://domo.gupy.io/job/eyJqb2JJZCI6MTIyMjAwODMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by ConnectTimeoutError(<HTTPConnection(host='127.0.0.1', port=8000) at 0x206a1430550>, 'Connection to 127.0.0.1 timed out. (connect timeout=2)'))
+2026-08-28 19:51:44,570 - ERROR - Erro ao processar a linha 1 - https://xfckvnq.gupy.io/job/eyJqb2JJZCI6MTIzMTU1MDYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by ConnectTimeoutError(<HTTPConnection(host='127.0.0.1', port=8000) at 0x206a1430f50>, 'Connection to 127.0.0.1 timed out. (connect timeout=2)'))
+2026-08-28 19:51:46,577 - ERROR - Erro ao processar a linha 2 - https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyODg5NzksInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by ConnectTimeoutError(<HTTPConnection(host='127.0.0.1', port=8000) at 0x206a137e650>, 'Connection to 127.0.0.1 timed out. (connect timeout=2)'))
+2026-08-28 19:51:46,577 - WARNING - Limite de falhas consecutivas atingido. Envio de vagas para a API interrompido.
+2026-08-28 19:51:46,577 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
+2026-08-28 19:51:46,578 - INFO - Vagas novas nesta execução: 1
+2026-08-28 19:51:46,578 - INFO - Vagas novas nesta execução encaminhadas para a API: 0
+2026-08-28 19:51:46,578 - INFO - Total acumulado de vagas: 20
+2026-08-28 19:51:46,578 - INFO - Total de vagas duplicadas: 0
+2026-08-28 19:51:46,578 - INFO - Total de erros de validação: 0
+2026-08-28 19:51:46,578 - INFO - Total de erros de conexão: 3
+2026-08-28 19:51:46,578 - INFO - Execução finalizada com sucesso
+2026-08-28 19:51:46,578 - INFO - ============================================================
+2026-08-28 19:53:00,589 - INFO - ============================================================
+2026-08-28 19:53:00,589 - INFO - Início da execução
+2026-08-28 19:53:00,589 - INFO - ====== WebDriver manager ======
+2026-08-28 19:53:01,158 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-08-28 19:53:04,361 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
+2026-08-28 19:53:16,972 - WARNING - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
+2026-08-28 19:53:16,972 - WARNING - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
+2026-08-28 19:53:24,597 - ERROR - Erro ao processar a linha 0 - https://domo.gupy.io/job/eyJqb2JJZCI6MTIyMjAwODMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by ConnectTimeoutError(<HTTPConnection(host='127.0.0.1', port=8000) at 0x21978f90550>, 'Connection to 127.0.0.1 timed out. (connect timeout=2)'))
+2026-08-28 19:53:26,603 - ERROR - Erro ao processar a linha 1 - https://xfckvnq.gupy.io/job/eyJqb2JJZCI6MTIzMTU1MDYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by ConnectTimeoutError(<HTTPConnection(host='127.0.0.1', port=8000) at 0x21978f90f50>, 'Connection to 127.0.0.1 timed out. (connect timeout=2)'))
+2026-08-28 19:53:28,611 - ERROR - Erro ao processar a linha 2 - https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyODg5NzksInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by ConnectTimeoutError(<HTTPConnection(host='127.0.0.1', port=8000) at 0x21978ede650>, 'Connection to 127.0.0.1 timed out. (connect timeout=2)'))
+2026-08-28 19:53:28,611 - WARNING - Limite de falhas consecutivas atingido. Envio de vagas para a API interrompido.
+2026-08-28 19:53:28,611 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
+2026-08-28 19:53:28,611 - INFO - Vagas novas nesta execução: 0
+2026-08-28 19:53:28,611 - INFO - Vagas novas nesta execução encaminhadas para a API: 0
+2026-08-28 19:53:28,611 - INFO - Total acumulado de vagas: 20
+2026-08-28 19:53:28,611 - INFO - Total de vagas duplicadas: 0
+2026-08-28 19:53:28,611 - INFO - Total de erros de validação: 0
+2026-08-28 19:53:28,611 - INFO - Total de erros de conexão: 3
+2026-08-28 19:53:28,611 - WARNING - Execução Concluída com ocorrências
+2026-08-28 19:53:28,611 - INFO - ============================================================
+2026-08-28 19:57:06,154 - INFO - ============================================================
+2026-08-28 19:57:06,155 - INFO - Início da execução
+2026-08-28 19:57:06,155 - INFO - ====== WebDriver manager ======
+2026-08-28 19:57:06,720 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-08-28 19:57:10,516 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
+2026-08-28 19:57:23,306 - WARNING - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
+2026-08-28 19:57:23,306 - WARNING - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
+2026-08-28 19:57:28,360 - WARNING - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTIyMjAwODMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,374 - WARNING - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyODg5NzksInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,379 - WARNING - Vaga duplicada: https://yduqstech.gupy.io/job/eyJqb2JJZCI6MTIxODEwMDAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,382 - WARNING - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyMDQ4MDUsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,386 - WARNING - Vaga duplicada: https://construmarket.gupy.io/job/eyJqb2JJZCI6MTIyMTI1OTcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,389 - WARNING - Vaga duplicada: https://evoluservices.gupy.io/job/eyJqb2JJZCI6MTIxODEwNDgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,392 - WARNING - Vaga duplicada: https://evoluservices.gupy.io/job/eyJqb2JJZCI6MTIxODA5OTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,395 - WARNING - Vaga duplicada: https://cuponomia.gupy.io/job/eyJqb2JJZCI6MTE5ODc0NzgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,423 - WARNING - Vaga duplicada: https://alaresinternet.gupy.io/job/eyJqb2JJZCI6NzEzNjgzOCwic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,427 - WARNING - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTU5MDIyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,431 - WARNING - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTUyMjY4Mywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,435 - WARNING - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIxNjAyMTIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,440 - WARNING - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTExMDU5MzQsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,444 - WARNING - Vaga duplicada: https://wyntech.gupy.io/job/eyJqb2JJZCI6MTIzMTcxMzcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,447 - WARNING - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIwOTAzMTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,450 - WARNING - Vaga duplicada: https://icarotech.gupy.io/job/eyJqb2JJZCI6MTIwNDQ4OTgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,454 - WARNING - Vaga duplicada: https://synvia.gupy.io/job/eyJqb2JJZCI6MTIwMjMxMzYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,458 - WARNING - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTE5Mzc3MzEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,461 - WARNING - Vaga duplicada: https://qualitydigital.gupy.io/job/eyJqb2JJZCI6NTUyODAyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-08-28 19:57:28,461 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
+2026-08-28 19:57:28,461 - INFO - Vagas novas nesta execução: 0
+2026-08-28 19:57:28,461 - INFO - Vagas novas nesta execução encaminhadas para a API: 1
+2026-08-28 19:57:28,461 - INFO - Total acumulado de vagas: 20
+2026-08-28 19:57:28,461 - INFO - Total de vagas duplicadas: 19
+2026-08-28 19:57:28,461 - INFO - Total de erros de validação: 0
+2026-08-28 19:57:28,461 - INFO - frase descritiva: 0
+2026-08-28 19:57:28,461 - INFO - frase descritiva: 0
+2026-08-28 19:57:28,461 - WARNING - Execução Concluída com ocorrências
+2026-08-28 19:57:28,461 - INFO - ============================================================
+2026-08-28 20:21:33,545 - INFO - ============================================================
+2026-08-28 20:21:33,546 - INFO - Início da execução
+2026-08-28 20:21:33,546 - INFO - ====== WebDriver manager ======
+2026-08-28 20:21:34,177 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-08-28 20:21:37,043 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
+2026-08-28 20:21:49,785 - WARNING - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
+2026-08-28 20:21:49,785 - WARNING - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
+2026-08-28 20:21:56,750 - ERROR - Erro ao processar a linha 0 - https://domo.gupy.io/job/eyJqb2JJZCI6MTIyMjAwODMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by ConnectTimeoutError(<HTTPConnection(host='127.0.0.1', port=8000) at 0x110aff50550>, 'Connection to 127.0.0.1 timed out. (connect timeout=2)'))
+2026-08-28 20:21:58,764 - ERROR - Erro ao processar a linha 1 - https://xfckvnq.gupy.io/job/eyJqb2JJZCI6MTIzMTU1MDYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by ConnectTimeoutError(<HTTPConnection(host='127.0.0.1', port=8000) at 0x110aff50f50>, 'Connection to 127.0.0.1 timed out. (connect timeout=2)'))
+2026-08-28 20:22:00,769 - ERROR - Erro ao processar a linha 2 - https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyODg5NzksInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /vagas/ (Caused by ConnectTimeoutError(<HTTPConnection(host='127.0.0.1', port=8000) at 0x110afe9e650>, 'Connection to 127.0.0.1 timed out. (connect timeout=2)'))
+2026-08-28 20:22:00,769 - WARNING - Limite de falhas consecutivas atingido. Envio de vagas para a API interrompido.
+2026-08-28 20:22:00,769 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
+2026-08-28 20:22:00,769 - INFO - Vagas novas nesta execução: 0
+2026-08-28 20:22:00,769 - INFO - Vagas novas cadastradas pela API: 0
+2026-08-28 20:22:00,769 - INFO - Total acumulado de vagas: 20
+2026-08-28 20:22:00,769 - INFO - Total de vagas duplicadas: 0
+2026-08-28 20:22:00,769 - INFO - Total de erros de validação: 0
+2026-08-28 20:22:00,769 - INFO - Total de erros de conexão: 3
+2026-08-28 20:22:00,769 - INFO - Total de status HTTP inesperados: 0
+2026-08-28 20:22:00,769 - INFO - Total de erros de timeout: 0
+2026-08-28 20:22:00,769 - WARNING - Execução Concluída com ocorrências
+2026-08-28 20:22:00,769 - INFO - ============================================================
+2026-08-28 20:22:33,525 - INFO - ============================================================
+2026-08-28 20:22:33,525 - INFO - Início da execução
+2026-08-28 20:22:33,526 - INFO - ====== WebDriver manager ======
+2026-08-28 20:22:34,069 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\151.0.7922.138\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-08-28 20:22:37,130 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
+2026-08-28 20:22:49,873 - WARNING - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
+2026-08-28 20:22:49,873 - WARNING - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
+2026-08-28 20:22:55,537 - WARNING - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTIyMjAwODMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,542 - WARNING - Vaga duplicada: https://xfckvnq.gupy.io/job/eyJqb2JJZCI6MTIzMTU1MDYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,546 - WARNING - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyODg5NzksInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,551 - WARNING - Vaga duplicada: https://yduqstech.gupy.io/job/eyJqb2JJZCI6MTIxODEwMDAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,555 - WARNING - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyMDQ4MDUsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,559 - WARNING - Vaga duplicada: https://construmarket.gupy.io/job/eyJqb2JJZCI6MTIyMTI1OTcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,562 - WARNING - Vaga duplicada: https://evoluservices.gupy.io/job/eyJqb2JJZCI6MTIxODEwNDgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,567 - WARNING - Vaga duplicada: https://evoluservices.gupy.io/job/eyJqb2JJZCI6MTIxODA5OTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,572 - WARNING - Vaga duplicada: https://cuponomia.gupy.io/job/eyJqb2JJZCI6MTE5ODc0NzgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,575 - WARNING - Vaga duplicada: https://alaresinternet.gupy.io/job/eyJqb2JJZCI6NzEzNjgzOCwic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,581 - WARNING - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTU5MDIyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,584 - WARNING - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTUyMjY4Mywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,588 - WARNING - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIxNjAyMTIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,592 - WARNING - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTExMDU5MzQsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,596 - WARNING - Vaga duplicada: https://wyntech.gupy.io/job/eyJqb2JJZCI6MTIzMTcxMzcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,600 - WARNING - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIwOTAzMTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,622 - WARNING - Vaga duplicada: https://icarotech.gupy.io/job/eyJqb2JJZCI6MTIwNDQ4OTgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,638 - WARNING - Vaga duplicada: https://synvia.gupy.io/job/eyJqb2JJZCI6MTIwMjMxMzYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,642 - WARNING - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTE5Mzc3MzEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,647 - WARNING - Vaga duplicada: https://qualitydigital.gupy.io/job/eyJqb2JJZCI6NTUyODAyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-08-28 20:22:55,647 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
+2026-08-28 20:22:55,647 - INFO - Vagas novas nesta execução: 0
+2026-08-28 20:22:55,647 - INFO - Vagas novas cadastradas pela API: 0
+2026-08-28 20:22:55,647 - INFO - Total acumulado de vagas: 20
+2026-08-28 20:22:55,647 - INFO - Total de vagas duplicadas: 20
+2026-08-28 20:22:55,647 - INFO - Total de erros de validação: 0
+2026-08-28 20:22:55,647 - INFO - Total de erros de conexão: 0
+2026-08-28 20:22:55,647 - INFO - Total de status HTTP inesperados: 0
+2026-08-28 20:22:55,647 - INFO - Total de erros de timeout: 0
+2026-08-28 20:22:55,647 - INFO - Execução finalizada com sucesso
+2026-08-28 20:22:55,647 - INFO - ============================================================

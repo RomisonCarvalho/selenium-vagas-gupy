@@ -65,8 +65,8 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
                 # que o cargo não teve resultado e devolve o que já foi coletado até aqui
                 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[href*="/job/"]')))
             except TimeoutException:
-                logging.info(f"Para o cargo '{termo}' não foram encontradas vagas ou a página falhou.")
-                logging.info(f"Aviso: Tempo limite atingido para o cargo {termo}.")
+                logging.warning(f"Para o cargo '{termo}' não foram encontradas vagas ou a página falhou.")
+                logging.warning(f"Aviso: Tempo limite atingido para o cargo {termo}.")
                 return lista_vagas
 
             vagas = driver.find_elements(By.CSS_SELECTOR, 'a[href*="/job/"]')
@@ -319,10 +319,15 @@ if __name__ == "__main__":
 
         url = r"http://127.0.0.1:8000/vagas/"
 
+        MAX_TENTATIVAS_CONSECUTIVAS = 3
         vagas_novas_api = 0
         vagas_duplicadas = 0
         erros_validacao = 0
         erros_conexao = 0
+        status_inesperados = 0
+        erros_timeout = 0
+        falhas_consecutivas = 0
+
 
         for index, dados_da_linha in df_api.iterrows():
             dados = {
@@ -338,11 +343,26 @@ if __name__ == "__main__":
             }
 
             try:
-                requisicao = requests.post(url, json=dados)
+                requisicao = requests.post(url, json=dados, timeout=(2, 5))
+                falhas_consecutivas = 0
             except requests.exceptions.ConnectionError as e:
-                logging.error(f"Erro ao processar a linha {index} - {dados_da_linha["link"]}: {e}")
                 erros_conexao += 1
-                continue
+                falhas_consecutivas += 1
+                logging.error(f"Erro ao processar a linha {index} - {dados_da_linha["link"]}: {e}")
+                if falhas_consecutivas < MAX_TENTATIVAS_CONSECUTIVAS:                                      
+                    continue
+                else:
+                    logging.warning("Limite de falhas consecutivas atingido. Envio de vagas para a API interrompido.")
+                    break
+            except requests.exceptions.ReadTimeout as e:
+                logging.error(f"Erro de timeout na linha {index} - {dados_da_linha["link"]}: {e}")
+                erros_timeout += 1
+                falhas_consecutivas += 1
+                if falhas_consecutivas < MAX_TENTATIVAS_CONSECUTIVAS:                                      
+                    continue
+                else:
+                    logging.warning("Limite de falhas consecutivas atingido. Envio de vagas para a API interrompido.")
+                    break
 
             status = requisicao.status_code
 
@@ -350,24 +370,42 @@ if __name__ == "__main__":
                 vagas_novas_api += 1
             elif status == 409:
                 vagas_duplicadas += 1
-                logging.warning(f"Vaga duplicada: {dados_da_linha['link']}")
+                logging.info(f"Vaga duplicada: {dados_da_linha['link']}")
             elif status == 422:
                 erros_validacao += 1
                 logging.error(f"Erro de validação: {requisicao.json()}")
             else:
-                logging.warning(f"Status inesperado ({status}) para o link {dados_da_linha['link']}: {requisicao.json()}")
+                logging.warning(f"Status inesperado ({status}) para o link {dados_da_linha['link']}: {requisicao.text}")
+                status_inesperados += 1
             
             
         logging.info(f"Arquivo CSV salvo em: {caminho_csv}")
         logging.info(f"Vagas novas nesta execução: {vagas_novas}")
-        logging.info(f"Vagas novas nesta execução encaminhadas para a API: {vagas_novas_api}")
+        logging.info(f"Vagas novas cadastradas pela API: {vagas_novas_api}")
         logging.info(f"Total acumulado de vagas: {len(df_final)}")
-        logging.info(f"Total de vagas duplicadas: {vagas_duplicadas}")
+        logging.info(f"Total de vagas duplicadas na API: {vagas_duplicadas}")
         logging.info(f"Total de erros de validação: {erros_validacao}")
         logging.info(f"Total de erros de conexão: {erros_conexao}")
-        logging.info("Execução finalizada com sucesso")
+        logging.info(f"Total de status HTTP inesperados: {status_inesperados}")
+        logging.info(f"Total de erros de timeout: {erros_timeout}")
+
+
+        contadores = [
+            erros_validacao,
+            erros_conexao,
+            status_inesperados,
+            erros_timeout
+        ]
+
+        if any(contadores):            
+            logging.warning("Execução Concluída com ocorrências")
+        else:
+            logging.info("Execução finalizada com sucesso")
+
         logging.info("=" * 60)
 
-        
+    except Exception as e:
+        logging.error(f"Execução falhou: {e}")
+
     finally:
         driver.quit()
