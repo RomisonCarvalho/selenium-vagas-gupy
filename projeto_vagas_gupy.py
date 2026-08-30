@@ -21,8 +21,14 @@ from pathlib import Path
 import pandas as pd
 import logging
 import requests
+import os
+import smtplib
+from email.message import EmailMessage
+from dotenv import load_dotenv
 
 
+load_dotenv()
+destinatario = os.getenv("EMAIL_DESTINATARIO")
 
 ## 2. Busca, extração e paginação
  
@@ -168,6 +174,58 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
             
     return lista_vagas
 
+
+def enviar_email(destinatario: str, assunto: str, corpo_email: str, corpo_email_html: str) -> bool:
+    """
+    Envia uma notificação por e-mail utilizando SMTP com autenticação e TLS.
+
+    A mensagem contém uma versão em texto simples e, quando fornecida, uma
+    alternativa em HTML. As credenciais do remetente são obtidas por meio
+    das variáveis de ambiente configuradas no arquivo .env.
+
+    Args:
+        destinatario (str): Endereço de e-mail que receberá a notificação.
+        assunto (str): Assunto da mensagem.
+        corpo_email (str): Conteúdo da mensagem em texto simples.
+        corpo_email_html (str): Conteúdo alternativo da mensagem em HTML.
+
+    Returns:
+        bool: True se o e-mail for enviado com sucesso e False se houver
+        falha de configuração ou erro durante o envio.
+    """
+    remetente = os.getenv("EMAIL_REMETENTE")
+    senha = os.getenv("EMAIL_SENHA_APP")
+
+    if not remetente or not senha or not destinatario:
+        logging.error("Erro: remetente, senha ou destinatário não configurado.")
+        return False
+    
+    msg = EmailMessage()
+    msg["Subject"] = assunto
+    msg["From"] = remetente
+    msg["To"] = destinatario
+
+    msg.set_content(corpo_email)
+
+    if corpo_email_html:
+        msg.add_alternative(corpo_email_html, subtype="html")
+
+    SMTP_SERVER = "smtp.gmail.com"
+    SMTP_PORT = 587
+
+    try:
+
+        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+            server.starttls()  # Criptografa a conexão
+            server.login(remetente, senha)
+            server.send_message(msg)
+        logging.info("E-mail enviado com sucesso!")    
+
+    except Exception as e:
+        logging.error(f"Falha ao enviar notificação por e-mail: {e}")
+        return False
+
+    return True
 
 
 if __name__ == "__main__":
@@ -348,14 +406,14 @@ if __name__ == "__main__":
             except requests.exceptions.ConnectionError as e:
                 erros_conexao += 1
                 falhas_consecutivas += 1
-                logging.error(f"Erro ao processar a linha {index} - {dados_da_linha["link"]}: {e}")
+                logging.error(f"Erro ao processar a linha {index} - {dados_da_linha['link']}: {e}")
                 if falhas_consecutivas < MAX_TENTATIVAS_CONSECUTIVAS:                                      
                     continue
                 else:
                     logging.warning("Limite de falhas consecutivas atingido. Envio de vagas para a API interrompido.")
                     break
             except requests.exceptions.ReadTimeout as e:
-                logging.error(f"Erro de timeout na linha {index} - {dados_da_linha["link"]}: {e}")
+                logging.error(f"Erro de timeout na linha {index} - {dados_da_linha['link']}: {e}")
                 erros_timeout += 1
                 falhas_consecutivas += 1
                 if falhas_consecutivas < MAX_TENTATIVAS_CONSECUTIVAS:                                      
@@ -389,7 +447,6 @@ if __name__ == "__main__":
         logging.info(f"Total de status HTTP inesperados: {status_inesperados}")
         logging.info(f"Total de erros de timeout: {erros_timeout}")
 
-
         contadores = [
             erros_validacao,
             erros_conexao,
@@ -398,14 +455,111 @@ if __name__ == "__main__":
         ]
 
         if any(contadores):            
+
+            assunto = "Monitoramento de vagas concluído com ocorrências!"
+            corpo = f"""
+                O monitoramento de vagas chegou ao final, porém foram registradas ocorrências durante a execução.
+                Resumo da execução:
+                Vagas novas encontradas: {vagas_novas}
+                Vagas novas cadastradas pela API: {vagas_novas_api}
+                Vagas duplicadas na API: {vagas_duplicadas}
+                Total acumulado de vagas: {len(df_final)}
+                Erros de conexão: {erros_conexao}
+                Erros de validação: {erros_validacao}
+                Erros de timeout: {erros_timeout}
+                Status HTTP inesperados: {status_inesperados}
+                O processamento principal foi concluído, mas recomenda-se consultar o arquivo de log para mais detalhes.
+            """
+            corpo_html = f"""
+                <html>
+                    <body>
+                        <h2>O monitoramento de vagas chegou ao final, porém foram registradas ocorrências durante a execução.</h2>
+                        <p>Resumo da execução:</p>
+                        <p>Vagas novas encontradas: {vagas_novas}</p>
+                        <p>Vagas novas cadastradas pela API: {vagas_novas_api}</p>
+                        <p>Vagas duplicadas na API: {vagas_duplicadas}</p>
+                        <p>Total acumulado de vagas: {len(df_final)}</p>
+                        <p>Erros de conexão: {erros_conexao}</p>
+                        <p>Erros de validação: {erros_validacao}</p>
+                        <p>Erros de timeout: {erros_timeout}</p>
+                        <p>Status HTTP inesperados: {status_inesperados}</p>
+                        <strong>O processamento principal foi concluído, mas recomenda-se consultar o arquivo de log para mais detalhes.</strong>
+                    </body>
+                </html>    
+            """
+
             logging.warning("Execução Concluída com ocorrências")
+
         else:
+
+            assunto = "Monitoramento de vagas concluído com sucesso!"
+            corpo = f"""
+                O monitoramento de vagas foi concluído com sucesso.
+                Resumo da execução:
+                Vagas novas encontradas: {vagas_novas}
+                Vagas novas cadastradas pela API: {vagas_novas_api}
+                Vagas duplicadas na API: {vagas_duplicadas}
+                Total acumulado de vagas: {len(df_final)}
+                Erros de conexão: 0
+                Erros de validação: 0
+                Erros de timeout: 0
+                Status HTTP inesperados: 0
+                A execução foi finalizada normalmente.
+            """
+            corpo_html = f"""
+                <html>
+                    <body>
+                        <h2>O monitoramento de vagas foi concluído com sucesso.</h2>
+                        <p>Resumo da execução:</p>
+                        <p>Vagas novas encontradas: {vagas_novas}</p>
+                        <p>Vagas novas cadastradas pela API: {vagas_novas_api}</p>
+                        <p>Vagas duplicadas na API: {vagas_duplicadas}</p>
+                        <p>Total acumulado de vagas: {len(df_final)}</p>
+                        <p>Erros de conexão: 0</p>
+                        <p>Erros de validação: 0</p>
+                        <p>Erros de timeout: 0</p>
+                        <p>Status HTTP inesperados: 0</p>
+                        <strong>A execução foi finalizada normalmente.</strong>
+                    </body>
+                </html>
+            """
+
             logging.info("Execução finalizada com sucesso")
+
+        enviar_email(
+            destinatario=destinatario,
+            assunto=assunto,
+            corpo_email=corpo,
+            corpo_email_html=corpo_html
+        )
 
         logging.info("=" * 60)
 
     except Exception as e:
         logging.error(f"Execução falhou: {e}")
 
+        assunto = "Falha no monitoramento de vagas"
+        corpo = f"""
+            A execução do monitoramento de vagas foi interrompida antes da conclusão.
+            Motivo registrado: {e}
+            Consulte o arquivo de log para obter mais detalhes sobre a falha.
+        """
+        corpo_html = f"""
+            <html>
+                <body>
+                    <strong>A execução do monitoramento de vagas foi interrompida antes da conclusão.</strong>
+                    <p>Motivo registrado: {e}</p>
+                    <p>Consulte o arquivo de log para obter mais detalhes sobre a falha.</p>
+                </body>
+            </html>
+        """
+
+        enviar_email(
+            destinatario=destinatario,
+            assunto=assunto,
+            corpo_email=corpo,
+            corpo_email_html=corpo_html
+        )
+    
     finally:
         driver.quit()

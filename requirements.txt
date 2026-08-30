@@ -1,4 +1,5 @@
 selenium==4.18.1
 webdriver-manager==4.0.1
 pandas==2.2.1
-requests
+requests==2.34.2
+python-dotenv==1.2.2
