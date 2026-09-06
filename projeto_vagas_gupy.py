@@ -29,6 +29,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 destinatario = os.getenv("EMAIL_DESTINATARIO")
+API_URL = os.getenv("API_URL")
+API_KEY = os.getenv("API_KEY")
+
 
 ## 2. Busca, extração e paginação
  
@@ -276,6 +279,14 @@ if __name__ == "__main__":
     driver = webdriver.Chrome(service=servico, options=opcoes)
     
     try:
+        if API_URL is None or API_URL == "":
+            raise RuntimeError("A 'API_URL' não está definida. A aplicação não pode ser iniciada sem a configuração da API.")
+        
+        if API_KEY is None or API_KEY == "":
+            raise RuntimeError("A 'API_KEY' não está definida. A aplicação não pode ser iniciada sem as credenciais de autenticação.")
+
+        headers = {"X-API-Key": API_KEY}
+        
         driver.get("https://portal.gupy.io/job-search")
 
         ## 4. Execução para múltiplos cargos
@@ -375,7 +386,6 @@ if __name__ == "__main__":
 
         df_api["data"] = df_api["data"].dt.strftime("%Y-%m-%d")
 
-        url = r"http://127.0.0.1:8000/vagas/"
 
         MAX_TENTATIVAS_CONSECUTIVAS = 3
         vagas_novas_api = 0
@@ -385,6 +395,7 @@ if __name__ == "__main__":
         status_inesperados = 0
         erros_timeout = 0
         falhas_consecutivas = 0
+        falhas_autenticacao = 0
 
 
         for index, dados_da_linha in df_api.iterrows():
@@ -401,7 +412,7 @@ if __name__ == "__main__":
             }
 
             try:
-                requisicao = requests.post(url, json=dados, timeout=(2, 5))
+                requisicao = requests.post(API_URL, json=dados, timeout=(2, 15), headers=headers)
                 falhas_consecutivas = 0
             except requests.exceptions.ConnectionError as e:
                 erros_conexao += 1
@@ -432,6 +443,10 @@ if __name__ == "__main__":
             elif status == 422:
                 erros_validacao += 1
                 logging.error(f"Erro de validação: {requisicao.json()}")
+            elif status == 401:
+                falhas_autenticacao += 1
+                logging.error("Falha de autenticação na API")
+                break
             else:
                 logging.warning(f"Status inesperado ({status}) para o link {dados_da_linha['link']}: {requisicao.text}")
                 status_inesperados += 1
@@ -446,12 +461,14 @@ if __name__ == "__main__":
         logging.info(f"Total de erros de conexão: {erros_conexao}")
         logging.info(f"Total de status HTTP inesperados: {status_inesperados}")
         logging.info(f"Total de erros de timeout: {erros_timeout}")
+        logging.info(f"Total de falhas de autenticação na API: {falhas_autenticacao}")
 
         contadores = [
             erros_validacao,
             erros_conexao,
             status_inesperados,
-            erros_timeout
+            erros_timeout,
+            falhas_autenticacao
         ]
 
         if any(contadores):            
@@ -468,6 +485,7 @@ if __name__ == "__main__":
                 Erros de validação: {erros_validacao}
                 Erros de timeout: {erros_timeout}
                 Status HTTP inesperados: {status_inesperados}
+                Falhas de autenticação: {falhas_autenticacao}
                 O processamento principal foi concluído, mas recomenda-se consultar o arquivo de log para mais detalhes.
             """
             corpo_html = f"""
@@ -483,6 +501,7 @@ if __name__ == "__main__":
                         <p>Erros de validação: {erros_validacao}</p>
                         <p>Erros de timeout: {erros_timeout}</p>
                         <p>Status HTTP inesperados: {status_inesperados}</p>
+                        <p>Falhas de autenticação: {falhas_autenticacao}</p>
                         <strong>O processamento principal foi concluído, mas recomenda-se consultar o arquivo de log para mais detalhes.</strong>
                     </body>
                 </html>    
@@ -500,10 +519,11 @@ if __name__ == "__main__":
                 Vagas novas cadastradas pela API: {vagas_novas_api}
                 Vagas duplicadas na API: {vagas_duplicadas}
                 Total acumulado de vagas: {len(df_final)}
-                Erros de conexão: 0
-                Erros de validação: 0
-                Erros de timeout: 0
-                Status HTTP inesperados: 0
+                Erros de conexão: {erros_conexao}
+                Erros de validação: {erros_validacao}
+                Erros de timeout: {erros_timeout}
+                Status HTTP inesperados: {status_inesperados}
+                Falhas de autenticação: {falhas_autenticacao}
                 A execução foi finalizada normalmente.
             """
             corpo_html = f"""
@@ -515,10 +535,11 @@ if __name__ == "__main__":
                         <p>Vagas novas cadastradas pela API: {vagas_novas_api}</p>
                         <p>Vagas duplicadas na API: {vagas_duplicadas}</p>
                         <p>Total acumulado de vagas: {len(df_final)}</p>
-                        <p>Erros de conexão: 0</p>
-                        <p>Erros de validação: 0</p>
-                        <p>Erros de timeout: 0</p>
-                        <p>Status HTTP inesperados: 0</p>
+                        <p>Erros de conexão: {erros_conexao}</p>
+                        <p>Erros de validação: {erros_validacao}</p>
+                        <p>Erros de timeout: {erros_timeout}</p>
+                        <p>Status HTTP inesperados: {status_inesperados}</p>
+                        <p>Falhas de autenticação: {falhas_autenticacao}</p>
                         <strong>A execução foi finalizada normalmente.</strong>
                     </body>
                 </html>
