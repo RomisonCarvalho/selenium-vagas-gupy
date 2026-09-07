@@ -17,14 +17,14 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import quote
-from pathlib import Path
+from email.message import EmailMessage
+from dotenv import load_dotenv
 import pandas as pd
 import logging
 import requests
 import os
 import smtplib
-from email.message import EmailMessage
-from dotenv import load_dotenv
+
 
 
 load_dotenv()
@@ -94,6 +94,7 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
                 for empresa in empresas:
                     if not empresa.text.startswith("Publicada em:"):
                         nome_empresa = empresa.text
+
                     else:
                         data_vaga_publicada = empresa.text
 
@@ -233,29 +234,10 @@ def enviar_email(destinatario: str, assunto: str, corpo_email: str, corpo_email_
 
 if __name__ == "__main__":
 
-    # Localiza a pasta do projeto a partir do próprio arquivo, garantindo que o
-    # caminho funcione independente de onde o script for executado
-    pasta_projeto = Path(__file__).parent
-
-    # Garante que as pastas existam mesmo numa cópia nova do repositório
-    # (parents=True cria pastas intermediárias; exist_ok=True evita erro se já existirem)
-    pasta_reports = pasta_projeto / "reports"
-    pasta_reports.mkdir(parents=True, exist_ok=True)
-
-    pasta_logs = pasta_projeto / "logs"
-    pasta_logs.mkdir(parents=True, exist_ok=True)
-
-    caminho_csv = pasta_reports / "vagas_encontradas.csv"
-
-    caminho_log = pasta_logs / "execucao.log"
-
-    # Registra as execuções em arquivo (com data/hora de cada linha), já que o
-    # script roda de forma automática e sem supervisão via Agendador de Tarefas
+    # Configura os logs da execução para saída padrão, permitindo visualização no terminal e captura pelo Cloud Logging.
     logging.basicConfig(
-        filename=caminho_log,
         level=logging.INFO,
-        format="%(asctime)s - %(levelname)s - %(message)s",
-        encoding="utf-8"
+        format="%(asctime)s - %(levelname)s - %(message)s"
     )
 
     # Separador visual no log, facilitando identificar onde cada execução começa
@@ -265,8 +247,7 @@ if __name__ == "__main__":
     ## 3. Iniciar o navegador
 
     # Criação da instância do navegador e acesso à página inicial do Gupy.
-
-    
+  
     driver = None
     
     try:
@@ -279,12 +260,23 @@ if __name__ == "__main__":
         headers = {"X-API-Key": API_KEY}
 
         # Abre o navegador e acessa a página inicial do Gupy
-        servico = Service(ChromeDriverManager().install())
+        
 
         # Roda sem interface visível (headless) e fixa o tamanho de renderização,
         # já que o site é responsivo e sem isso poderia carregar em layout mobile,
         # quebrando os seletores validados no layout desktop
         opcoes = Options()
+        opcoes.add_argument("--lang=pt-BR")
+        opcoes.add_experimental_option("prefs", {"intl.accept_languages": "pt-BR,pt"})
+
+        if os.path.exists("/usr/bin/chromium"):
+            opcoes.binary_location = "/usr/bin/chromium"
+            opcoes.add_argument("--no-sandbox")
+            opcoes.add_argument("--disable-dev-shm-usage")
+            servico = Service("/usr/bin/chromedriver")
+        else:
+            servico = Service(ChromeDriverManager().install())
+
         opcoes.add_argument("--headless=new")
         opcoes.add_argument("--window-size=1920,1080")
 
@@ -314,9 +306,9 @@ if __name__ == "__main__":
             # mantendo tudo em uma única lista de dicionários, sem aninhamento
             vagas_encontradas.extend(buscar_vagas(driver, cargo))
 
-        ## 5. Organização e exportação dos dados
+        ## 5. Organização e tratamento dos dados
 
-        # Transformar os resultados em DataFrame e exportar para CSV.
+        # Transforma os resultados em DataFrame e prepara os dados para envio à API.
 
         # Colunas esperadas no DataFrame
         colunas = [
@@ -350,30 +342,6 @@ if __name__ == "__main__":
 
         for coluna in colunas_nulos:
             df_vagas[coluna] = df_vagas[coluna].fillna("Não informado")
-
-        # Lê o histórico de execuções anteriores, se existir
-        if caminho_csv.exists():
-            df_antigo = pd.read_csv(
-                caminho_csv,
-                sep=";",
-                encoding="utf-8-sig",
-                parse_dates=["Data"],
-                date_format="%d/%m/%Y"
-            )
-        else:
-            df_antigo = pd.DataFrame(columns=colunas)
-
-        # Junta o histórico com as vagas coletadas nesta execução
-        df_final = pd.concat([df_antigo, df_vagas], ignore_index=True)
-
-        # Remove vagas repetidas pelo link
-        df_final = df_final.drop_duplicates(subset=["Link"])
-
-        # Quantidade de vagas que realmente foram adicionadas ao histórico
-        vagas_novas = len(df_final) - len(df_antigo)
-
-        # Exporta o histórico atualizado
-        df_final.to_csv(caminho_csv, index=False, sep=";", encoding="utf-8-sig", date_format="%d/%m/%Y")
        
         df_api = df_vagas.rename(columns={
             "Cargo Buscado": "cargo_buscado",
@@ -389,7 +357,6 @@ if __name__ == "__main__":
 
         df_api["data"] = df_api["data"].dt.strftime("%Y-%m-%d")
 
-
         MAX_TENTATIVAS_CONSECUTIVAS = 3
         vagas_novas_api = 0
         vagas_duplicadas = 0
@@ -399,9 +366,14 @@ if __name__ == "__main__":
         erros_timeout = 0
         falhas_consecutivas = 0
         falhas_autenticacao = 0
+        datas_invalidas = 0
 
 
         for index, dados_da_linha in df_api.iterrows():
+            if pd.isna(dados_da_linha["data"]):
+                datas_invalidas += 1
+                logging.warning(f"Vaga ignorada por possuir data inválida: {dados_da_linha['titulo']} - {dados_da_linha['link']}")
+                continue
             dados = {
                 "cargo_buscado": dados_da_linha["cargo_buscado"],
                 "titulo": dados_da_linha["titulo"],
@@ -454,13 +426,11 @@ if __name__ == "__main__":
                 logging.warning(f"Status inesperado ({status}) para o link {dados_da_linha['link']}: {requisicao.text}")
                 status_inesperados += 1
             
-            
-        logging.info(f"Arquivo CSV salvo em: {caminho_csv}")
-        logging.info(f"Vagas novas nesta execução: {vagas_novas}")
+        logging.info(f"Vagas coletadas nesta execução: {len(df_vagas)}")   
         logging.info(f"Vagas novas cadastradas pela API: {vagas_novas_api}")
-        logging.info(f"Total acumulado de vagas: {len(df_final)}")
         logging.info(f"Total de vagas duplicadas na API: {vagas_duplicadas}")
         logging.info(f"Total de erros de validação: {erros_validacao}")
+        logging.info(f"Total de datas inválidas: {datas_invalidas}")
         logging.info(f"Total de erros de conexão: {erros_conexao}")
         logging.info(f"Total de status HTTP inesperados: {status_inesperados}")
         logging.info(f"Total de erros de timeout: {erros_timeout}")
@@ -471,7 +441,8 @@ if __name__ == "__main__":
             erros_conexao,
             status_inesperados,
             erros_timeout,
-            falhas_autenticacao
+            falhas_autenticacao,
+            datas_invalidas
         ]
 
         if any(contadores):            
@@ -480,32 +451,32 @@ if __name__ == "__main__":
             corpo = f"""
                 O monitoramento de vagas chegou ao final, porém foram registradas ocorrências durante a execução.
                 Resumo da execução:
-                Vagas novas encontradas: {vagas_novas}
+                Vagas coletadas nesta execução: {len(df_vagas)}
                 Vagas novas cadastradas pela API: {vagas_novas_api}
                 Vagas duplicadas na API: {vagas_duplicadas}
-                Total acumulado de vagas: {len(df_final)}
                 Erros de conexão: {erros_conexao}
                 Erros de validação: {erros_validacao}
+                Datas inválidas: {datas_invalidas}
                 Erros de timeout: {erros_timeout}
                 Status HTTP inesperados: {status_inesperados}
                 Falhas de autenticação: {falhas_autenticacao}
-                O processamento principal foi concluído, mas recomenda-se consultar o arquivo de log para mais detalhes.
+                O processamento principal foi concluído, mas recomenda-se consultar os logs da execução para mais detalhes.
             """
             corpo_html = f"""
                 <html>
                     <body>
                         <h2>O monitoramento de vagas chegou ao final, porém foram registradas ocorrências durante a execução.</h2>
                         <p>Resumo da execução:</p>
-                        <p>Vagas novas encontradas: {vagas_novas}</p>
+                        <p>Vagas coletadas nesta execução: {len(df_vagas)}</p>
                         <p>Vagas novas cadastradas pela API: {vagas_novas_api}</p>
                         <p>Vagas duplicadas na API: {vagas_duplicadas}</p>
-                        <p>Total acumulado de vagas: {len(df_final)}</p>
                         <p>Erros de conexão: {erros_conexao}</p>
                         <p>Erros de validação: {erros_validacao}</p>
+                        <p>Datas inválidas: {datas_invalidas}</p>
                         <p>Erros de timeout: {erros_timeout}</p>
                         <p>Status HTTP inesperados: {status_inesperados}</p>
                         <p>Falhas de autenticação: {falhas_autenticacao}</p>
-                        <strong>O processamento principal foi concluído, mas recomenda-se consultar o arquivo de log para mais detalhes.</strong>
+                        <strong>O processamento principal foi concluído, mas recomenda-se consultar os logs da execução para mais detalhes.</strong>
                     </body>
                 </html>    
             """
@@ -518,12 +489,12 @@ if __name__ == "__main__":
             corpo = f"""
                 O monitoramento de vagas foi concluído com sucesso.
                 Resumo da execução:
-                Vagas novas encontradas: {vagas_novas}
+                Vagas coletadas nesta execução: {len(df_vagas)}
                 Vagas novas cadastradas pela API: {vagas_novas_api}
                 Vagas duplicadas na API: {vagas_duplicadas}
-                Total acumulado de vagas: {len(df_final)}
                 Erros de conexão: {erros_conexao}
                 Erros de validação: {erros_validacao}
+                Datas inválidas: {datas_invalidas}
                 Erros de timeout: {erros_timeout}
                 Status HTTP inesperados: {status_inesperados}
                 Falhas de autenticação: {falhas_autenticacao}
@@ -534,12 +505,12 @@ if __name__ == "__main__":
                     <body>
                         <h2>O monitoramento de vagas foi concluído com sucesso.</h2>
                         <p>Resumo da execução:</p>
-                        <p>Vagas novas encontradas: {vagas_novas}</p>
+                        <p>Vagas coletadas nesta execução: {len(df_vagas)}</p>
                         <p>Vagas novas cadastradas pela API: {vagas_novas_api}</p>
                         <p>Vagas duplicadas na API: {vagas_duplicadas}</p>
-                        <p>Total acumulado de vagas: {len(df_final)}</p>
                         <p>Erros de conexão: {erros_conexao}</p>
                         <p>Erros de validação: {erros_validacao}</p>
+                        <p>Datas inválidas: {datas_invalidas}</p>
                         <p>Erros de timeout: {erros_timeout}</p>
                         <p>Status HTTP inesperados: {status_inesperados}</p>
                         <p>Falhas de autenticação: {falhas_autenticacao}</p>
