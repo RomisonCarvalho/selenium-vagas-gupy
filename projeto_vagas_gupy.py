@@ -266,17 +266,8 @@ if __name__ == "__main__":
 
     # Criação da instância do navegador e acesso à página inicial do Gupy.
 
-    # Abre o navegador e acessa a página inicial do Gupy
-    servico = Service(ChromeDriverManager().install())
-
-    # Roda sem interface visível (headless) e fixa o tamanho de renderização,
-    # já que o site é responsivo e sem isso poderia carregar em layout mobile,
-    # quebrando os seletores validados no layout desktop
-    opcoes = Options()
-    opcoes.add_argument("--headless=new")
-    opcoes.add_argument("--window-size=1920,1080")
     
-    driver = webdriver.Chrome(service=servico, options=opcoes)
+    driver = None
     
     try:
         if API_URL is None or API_URL == "":
@@ -286,6 +277,18 @@ if __name__ == "__main__":
             raise RuntimeError("A 'API_KEY' não está definida. A aplicação não pode ser iniciada sem as credenciais de autenticação.")
 
         headers = {"X-API-Key": API_KEY}
+
+        # Abre o navegador e acessa a página inicial do Gupy
+        servico = Service(ChromeDriverManager().install())
+
+        # Roda sem interface visível (headless) e fixa o tamanho de renderização,
+        # já que o site é responsivo e sem isso poderia carregar em layout mobile,
+        # quebrando os seletores validados no layout desktop
+        opcoes = Options()
+        opcoes.add_argument("--headless=new")
+        opcoes.add_argument("--window-size=1920,1080")
+
+        driver = webdriver.Chrome(service=servico, options=opcoes)
         
         driver.get("https://portal.gupy.io/job-search")
 
@@ -583,4 +586,5 @@ if __name__ == "__main__":
         )
     
     finally:
-        driver.quit()
+        if driver is not None:
+            driver.quit()

@@ -272,3 +272,89 @@
 2026-09-06 12:18:50,318 - INFO - Execução finalizada com sucesso
 2026-09-06 12:18:53,649 - INFO - E-mail enviado com sucesso!
 2026-09-06 12:18:53,649 - INFO - ============================================================
+2026-09-07 08:15:03,681 - INFO - ============================================================
+2026-09-07 08:15:03,682 - INFO - Início da execução
+2026-09-07 08:15:03,682 - INFO - ====== WebDriver manager ======
+2026-09-07 08:15:04,635 - INFO - Get LATEST chromedriver version for google-chrome
+2026-09-07 08:15:05,143 - INFO - Get LATEST chromedriver version for google-chrome
+2026-09-07 08:15:05,228 - INFO - WebDriver version 152.0.7977.82 selected
+2026-09-07 08:15:05,233 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/152.0.7977.82/win64/chromedriver-win64.zip
+2026-09-07 08:15:05,233 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/152.0.7977.82/win64/chromedriver-win64.zip
+2026-09-07 08:15:05,526 - INFO - Driver downloading response is 200
+2026-09-07 08:15:06,907 - INFO - Driver has been saved in cache [C:\Users\romis\.wdm\drivers\chromedriver\win64\152.0.7977.82]
+2026-09-07 08:15:12,099 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
+2026-09-07 08:15:24,499 - WARNING - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
+2026-09-07 08:15:24,499 - WARNING - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
+2026-09-07 08:15:37,073 - WARNING - Para o cargo 'Python Junior' não foram encontradas vagas ou a página falhou.
+2026-09-07 08:15:37,073 - WARNING - Aviso: Tempo limite atingido para o cargo Python Junior.
+2026-09-07 08:15:46,647 - INFO - Vaga duplicada: https://solveplan.gupy.io/job/eyJqb2JJZCI6MTI0MTA2NzIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:46,811 - INFO - Vaga duplicada: https://viceri-vagas.gupy.io/job/eyJqb2JJZCI6MTI0MTQ3MzksInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:46,956 - INFO - Vaga duplicada: https://qualitydigital.gupy.io/job/eyJqb2JJZCI6MTIzMzEwMDEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:47,095 - INFO - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIzMzc4MzEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:47,245 - INFO - Vaga duplicada: https://xfckvnq.gupy.io/job/eyJqb2JJZCI6MTIzMTU1MDYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:47,385 - INFO - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyODg5NzksInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:47,526 - INFO - Vaga duplicada: https://yduqstech.gupy.io/job/eyJqb2JJZCI6MTIxODEwMDAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:47,669 - INFO - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyMDQ4MDUsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:47,809 - INFO - Vaga duplicada: https://construmarket.gupy.io/job/eyJqb2JJZCI6MTIyMTI1OTcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:47,961 - INFO - Vaga duplicada: https://alaresinternet.gupy.io/job/eyJqb2JJZCI6NzEzNjgzOCwic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-09-07 08:15:48,099 - INFO - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTU5MDIyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-09-07 08:15:48,247 - INFO - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTUyMjY4Mywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-09-07 08:15:48,387 - INFO - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTExMDU5MzQsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:48,537 - INFO - Vaga duplicada: https://aurum.gupy.io/job/eyJqb2JJZCI6MTIzODA0NzIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:48,703 - INFO - Vaga duplicada: https://portabilis.gupy.io/job/eyJqb2JJZCI6MTIyODY3MzMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:48,849 - INFO - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIwOTAzMTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:49,011 - INFO - Vaga duplicada: https://icarotech.gupy.io/job/eyJqb2JJZCI6MTIwNDQ4OTgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 08:15:49,154 - INFO - Vaga duplicada: https://qualitydigital.gupy.io/job/eyJqb2JJZCI6NTUyODAyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-09-07 08:15:49,154 - INFO - Arquivo CSV salvo em: C:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
+2026-09-07 08:15:49,154 - INFO - Vagas novas nesta execução: 0
+2026-09-07 08:15:49,154 - INFO - Vagas novas cadastradas pela API: 0
+2026-09-07 08:15:49,154 - INFO - Total acumulado de vagas: 26
+2026-09-07 08:15:49,154 - INFO - Total de vagas duplicadas na API: 18
+2026-09-07 08:15:49,154 - INFO - Total de erros de validação: 0
+2026-09-07 08:15:49,154 - INFO - Total de erros de conexão: 0
+2026-09-07 08:15:49,154 - INFO - Total de status HTTP inesperados: 0
+2026-09-07 08:15:49,154 - INFO - Total de erros de timeout: 0
+2026-09-07 08:15:49,154 - INFO - Total de falhas de autenticação na API: 0
+2026-09-07 08:15:49,154 - INFO - Execução finalizada com sucesso
+2026-09-07 08:15:52,687 - INFO - E-mail enviado com sucesso!
+2026-09-07 08:15:52,688 - INFO - ============================================================
+2026-09-07 12:40:59,132 - INFO - ============================================================
+2026-09-07 12:40:59,132 - INFO - Início da execução
+2026-09-07 12:40:59,133 - INFO - ====== WebDriver manager ======
+2026-09-07 12:40:59,676 - INFO - Driver [C:\Users\romis\.wdm\drivers\chromedriver\win64\152.0.7977.82\chromedriver-win64/chromedriver.exe] found in cache by browser version
+2026-09-07 12:41:02,946 - INFO - Buscando 6 cargos: Estágio TI, Analista de Dados Júnior, Desenvolvedor Júnior, Python Junior, Analista de Sistema Júnior, Analista de Suporte Júnior
+2026-09-07 12:41:15,173 - WARNING - Para o cargo 'Analista de Dados Júnior' não foram encontradas vagas ou a página falhou.
+2026-09-07 12:41:15,173 - WARNING - Aviso: Tempo limite atingido para o cargo Analista de Dados Júnior.
+2026-09-07 12:41:28,263 - WARNING - Para o cargo 'Python Junior' não foram encontradas vagas ou a página falhou.
+2026-09-07 12:41:28,263 - WARNING - Aviso: Tempo limite atingido para o cargo Python Junior.
+2026-09-07 12:41:36,937 - INFO - Vaga duplicada: https://solveplan.gupy.io/job/eyJqb2JJZCI6MTI0MTA2NzIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:37,075 - INFO - Vaga duplicada: https://viceri-vagas.gupy.io/job/eyJqb2JJZCI6MTI0MTQ3MzksInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:37,217 - INFO - Vaga duplicada: https://qualitydigital.gupy.io/job/eyJqb2JJZCI6MTIzMzEwMDEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:37,357 - INFO - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIzMzc4MzEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:37,489 - INFO - Vaga duplicada: https://xfckvnq.gupy.io/job/eyJqb2JJZCI6MTIzMTU1MDYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:37,622 - INFO - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyODg5NzksInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:37,769 - INFO - Vaga duplicada: https://yduqstech.gupy.io/job/eyJqb2JJZCI6MTIxODEwMDAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:37,905 - INFO - Vaga duplicada: https://confitec.gupy.io/job/eyJqb2JJZCI6MTIyMDQ4MDUsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:38,043 - INFO - Vaga duplicada: https://construmarket.gupy.io/job/eyJqb2JJZCI6MTIyMTI1OTcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:38,181 - INFO - Vaga duplicada: https://alaresinternet.gupy.io/job/eyJqb2JJZCI6NzEzNjgzOCwic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-09-07 12:41:38,320 - INFO - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTU5MDIyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-09-07 12:41:38,461 - INFO - Vaga duplicada: https://terras&15719&inactive.gupy.io/job/eyJqb2JJZCI6MTUyMjY4Mywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-09-07 12:41:38,594 - INFO - Vaga duplicada: https://domo.gupy.io/job/eyJqb2JJZCI6MTExMDU5MzQsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:38,730 - INFO - Vaga duplicada: https://aurum.gupy.io/job/eyJqb2JJZCI6MTIzODA0NzIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:38,866 - INFO - Vaga duplicada: https://portabilis.gupy.io/job/eyJqb2JJZCI6MTIyODY3MzMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:39,001 - INFO - Vaga duplicada: https://softexpert.gupy.io/job/eyJqb2JJZCI6MTIwOTAzMTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:39,137 - INFO - Vaga duplicada: https://icarotech.gupy.io/job/eyJqb2JJZCI6MTIwNDQ4OTgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+2026-09-07 12:41:39,280 - INFO - Vaga duplicada: https://qualitydigital.gupy.io/job/eyJqb2JJZCI6NTUyODAyMywic291cmNlIjoiZ3VweV9wb3J0YWwifQ==?jobBoardSource=gupy_portal
+2026-09-07 12:41:39,280 - INFO - Arquivo CSV salvo em: c:\Users\romis\OneDrive\Área de Trabalho\GitHub\selenium-vagas-gupy\reports\vagas_encontradas.csv
+2026-09-07 12:41:39,280 - INFO - Vagas novas nesta execução: 0
+2026-09-07 12:41:39,280 - INFO - Vagas novas cadastradas pela API: 0
+2026-09-07 12:41:39,280 - INFO - Total acumulado de vagas: 26
+2026-09-07 12:41:39,280 - INFO - Total de vagas duplicadas na API: 18
+2026-09-07 12:41:39,280 - INFO - Total de erros de validação: 0
+2026-09-07 12:41:39,280 - INFO - Total de erros de conexão: 0
+2026-09-07 12:41:39,281 - INFO - Total de status HTTP inesperados: 0
+2026-09-07 12:41:39,281 - INFO - Total de erros de timeout: 0
+2026-09-07 12:41:39,281 - INFO - Total de falhas de autenticação na API: 0
+2026-09-07 12:41:39,281 - INFO - Execução finalizada com sucesso
+2026-09-07 12:41:42,615 - INFO - E-mail enviado com sucesso!
+2026-09-07 12:41:42,615 - INFO - ============================================================

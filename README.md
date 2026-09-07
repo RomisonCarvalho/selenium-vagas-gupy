@@ -2,7 +2,7 @@
 
 Projeto de automação desenvolvido em Python com Selenium para pesquisar e coletar vagas de emprego publicadas na plataforma [Gupy](https://www.gupy.io/), filtrando por cargo/palavra-chave e pelo modelo de trabalho remoto.
 
-O projeto nasceu de uma necessidade real: automatizar parte do processo de busca de vagas durante minha transição de carreira para a área de tecnologia. A automação coleta as vagas encontradas, organiza os dados em um DataFrame, mantém um histórico em CSV, envia as vagas coletadas para uma API por meio de requisições HTTP e notifica por e-mail o status final de cada execução.
+O projeto nasceu de uma necessidade real: automatizar parte do processo de busca de vagas durante minha transição de carreira para a área de tecnologia. A automação coleta as vagas encontradas, organiza os dados em um DataFrame, mantém um histórico em CSV, envia as vagas da execução atual para uma API hospedada em nuvem e notifica por e-mail o status final de cada execução.
 
 ## Objetivo
 
@@ -16,18 +16,22 @@ Gupy
 Selenium
   ↓
 Pandas / tratamento dos dados
-  ├──→ Histórico em CSV
-  ├──→ Requisições HTTP
+  ├──→ Histórico local em CSV
+  ├──→ HTTPS + X-API-Key
   │       ↓
-  │     API FastAPI
+  │     FastAPI
   │       ↓
-  │     Banco de dados
+  │     Google Cloud Run
+  │       ↓
+  │     Neon PostgreSQL
   └──→ Notificação por e-mail
           ↓
-        SMTP com TLS
+        Gmail SMTP + TLS
 ```
 
-O CSV continua sendo mantido como histórico local da automação, enquanto a integração HTTP permite que as vagas da execução atual sejam encaminhadas para a API. Ao final do processamento, uma notificação por e-mail informa se a execução terminou com sucesso, com ocorrências ou com falha.
+O CSV continua sendo mantido como histórico local da automação, enquanto a integração HTTP envia as vagas da execução atual para a API. A API é executada no Google Cloud Run e persiste os dados em PostgreSQL hospedado no Neon.
+
+Ao final do processamento, uma notificação por e-mail informa se a execução terminou com sucesso, com ocorrências ou com falha.
 
 ## Tecnologias
 
@@ -38,6 +42,8 @@ O CSV continua sendo mantido como histórico local da automação, enquanto a in
 - WebDriver Manager
 - python-dotenv
 - FastAPI (API externa integrada ao projeto)
+- Google Cloud Run
+- Neon PostgreSQL
 - SMTP com TLS para envio das notificações
 - Jupyter Notebook (utilizado durante a prototipagem)
 - `pathlib`, `logging`, `os`, `smtplib` e `email` (bibliotecas padrão do Python)
@@ -66,14 +72,19 @@ O CSV continua sendo mantido como histórico local da automação, enquanto a in
 - [X] Remover vagas duplicadas no CSV utilizando o link como identificador
 - [X] Exportar os resultados para CSV
 - [X] Enviar as vagas da execução atual para uma API via HTTP
-- [X] Tratar respostas HTTP de vaga cadastrada, duplicidade, erro de validação e status inesperados
+- [X] Carregar a URL e a chave da API por variáveis de ambiente
+- [X] Autenticar requisições utilizando o header `X-API-Key`
+- [X] Tratar respostas HTTP de vaga cadastrada, duplicidade, erro de validação, falha de autenticação e status inesperados
+- [X] Interromper os envios em caso de falha de autenticação HTTP `401`
 - [X] Configurar timeout para as requisições HTTP
 - [X] Interromper os envios para a API após o limite de falhas consecutivas
+- [X] Integrar a automação à API hospedada no Google Cloud Run
+- [X] Persistir as vagas remotamente em PostgreSQL por meio da API
 - [X] Registrar as execuções e ocorrências em arquivo de log
 - [X] Diferenciar execução concluída com sucesso, concluída com ocorrências e execução com falha
 - [X] Enviar uma notificação por e-mail conforme o status final da execução
 - [X] Incluir no mesmo e-mail uma versão em texto simples e uma alternativa em HTML
-- [X] Proteger as credenciais de e-mail por meio de variáveis de ambiente
+- [X] Proteger credenciais e configurações sensíveis por meio de variáveis de ambiente
 - [X] Executar o navegador em modo headless
 - [X] Fechar o navegador com segurança utilizando `try/finally`
 - [X] Permitir execução periódica pelo Agendador de Tarefas do Windows
@@ -119,16 +130,27 @@ Para a integração com a API, somente as vagas coletadas na execução atual s�
 
 ## Integração com a API
 
-A automação utiliza a biblioteca `requests` para enviar cada vaga coletada para o endpoint configurado no script.
+A automação utiliza a biblioteca `requests` para enviar cada vaga coletada ao endpoint definido na variável de ambiente `API_URL`.
+
+As requisições de cadastro incluem o header:
+
+```http
+X-API-Key: <chave_da_api>
+```
+
+A chave é carregada da variável de ambiente `API_KEY` e não fica gravada diretamente no código.
 
 As respostas são tratadas de acordo com o status HTTP retornado:
 
 - `200`: vaga cadastrada com sucesso;
+- `401`: falha de autenticação; o envio de novas vagas é interrompido;
 - `409`: vaga já cadastrada;
 - `422`: erro de validação dos dados enviados;
 - outros status: registrados como status HTTP inesperados.
 
 Também são tratados erros de conexão e timeout. Após atingir o limite configurado de falhas consecutivas, somente o envio para a API é interrompido; o restante da automação continua normalmente.
+
+A API utilizada em produção está hospedada no Google Cloud Run e persiste os dados em PostgreSQL no Neon.
 
 ## Notificações por e-mail
 
@@ -139,13 +161,7 @@ Ao final da execução, a automação envia uma notificação com o resultado do
 
 As duas versões fazem parte de um único e-mail. O envio utiliza o servidor SMTP do Gmail na porta `587`, com autenticação e conexão protegida por TLS.
 
-As credenciais e o destinatário não ficam gravados no código. Eles são carregados do arquivo `.env` pela biblioteca `python-dotenv`, a partir das seguintes variáveis:
-
-```env
-EMAIL_REMETENTE=
-EMAIL_SENHA_APP=
-EMAIL_DESTINATARIO=
-```
+As credenciais e configurações externas não ficam gravadas diretamente no código. Elas são carregadas do arquivo `.env` pela biblioteca `python-dotenv`.
 
 O repositório fornece o arquivo `.env.example` como modelo, sem credenciais reais. O arquivo `.env` local deve permanecer fora do versionamento.
 
@@ -164,6 +180,7 @@ O projeto registra as execuções em arquivo de log, incluindo:
 - timeouts e ocorrências durante a coleta;
 - erros de conexão com a API;
 - erros de validação;
+- falhas de autenticação na API;
 - status HTTP inesperados;
 - quantidade de vagas novas;
 - quantidade de vagas cadastradas e duplicadas na API;
@@ -229,7 +246,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-A dependência `python-dotenv` é responsável por carregar as configurações de e-mail do arquivo `.env`.
+A dependência `python-dotenv` é responsável por carregar as configurações de e-mail e de integração com a API a partir do arquivo `.env`.
 
 ### 4. Configure as variáveis de ambiente
 
@@ -245,13 +262,22 @@ Depois, preencha o arquivo `.env`:
 EMAIL_REMETENTE=seu_email@gmail.com
 EMAIL_SENHA_APP=sua_senha_de_app
 EMAIL_DESTINATARIO=email_que_recebera_as_notificacoes
+
+API_URL=https://seu-servico.run.app/vagas/
+API_KEY=sua_chave_da_api
 ```
 
-Como o envio utiliza o SMTP do Gmail, `EMAIL_SENHA_APP` deve receber uma senha de app da conta remetente, e não a senha comum da conta. Não versione o arquivo `.env` nem compartilhe suas credenciais.
+Como o envio utiliza o SMTP do Gmail, `EMAIL_SENHA_APP` deve receber uma senha de app da conta remetente, e não a senha comum da conta.
 
-### 5. Execute a API
+`API_URL` deve apontar para o endpoint de cadastro da API e `API_KEY` deve conter a chave utilizada no header `X-API-Key`.
 
-Para utilizar a integração HTTP completa, a API configurada no script deve estar em execução e acessível.
+Não versione o arquivo `.env` nem compartilhe suas credenciais.
+
+### 5. Configure o acesso à API
+
+Para utilizar a integração HTTP completa, a API definida em `API_URL` deve estar acessível.
+
+Em produção, a automação pode apontar para a API hospedada no Google Cloud Run. Durante o desenvolvimento, também é possível utilizar uma instância local da API, desde que a URL seja alterada no `.env`.
 
 Caso a API esteja indisponível, a automação mantém o processamento local, registra as falhas, interrompe novas tentativas de envio após atingir o limite configurado e informa as ocorrências na notificação final.
 
@@ -275,7 +301,9 @@ No meu ambiente, a execução foi configurada para ocorrer semanalmente.
 
 🚧 Projeto em evolução.
 
-A versão original da automação já realiza busca, coleta, tratamento, histórico em CSV e execução agendada. A evolução atual adiciona integração HTTP com uma API, tratamento de falhas de comunicação e notificações por e-mail com resumo operacional, mantendo a proposta de transformar o projeto em uma solução de monitoramento de vagas mais completa.
+A automação atualmente realiza busca, coleta, tratamento, histórico em CSV, execução agendada, integração autenticada com uma API hospedada no Google Cloud Run, persistência remota em PostgreSQL e envio de notificações por e-mail com resumo operacional.
+
+Como evolução futura, o projeto poderá explorar a execução da própria automação em ambiente de nuvem e novos mecanismos de acompanhamento do ciclo de vida das vagas.
 
 ## Autor
 
