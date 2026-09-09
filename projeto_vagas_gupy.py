@@ -1,11 +1,12 @@
 
 # Automação de Busca de Vagas - Gupy
 
-# Projeto de automação com Selenium para busca e coleta de vagas no Gupy.
+# Automação com Selenium para busca e coleta de vagas remotas no Gupy,
+# com tratamento dos dados, integração via API e suporte à execução local ou em container.
 
 ## 1. Configuração inicial
  
-# Importação de bibliotecas e configuração do navegador.
+# Importação das bibliotecas e carregamento das configurações da aplicação.
 
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
@@ -26,7 +27,8 @@ import os
 import smtplib
 
 
-
+# Carrega variáveis do arquivo .env quando executado localmente.
+# Em ambiente de nuvem, as mesmas configurações são fornecidas por variáveis de ambiente e secrets.
 load_dotenv()
 destinatario = os.getenv("EMAIL_DESTINATARIO")
 API_URL = os.getenv("API_URL")
@@ -64,118 +66,127 @@ def buscar_vagas(driver: WebDriver, termo: str) -> list:
 
     driver.get(link_vaga)
 
+    # Fecha o banner de consentimento quando exibido, evitando que ele
+    # intercepte cliques nos controles de paginação.
+    try:
+        elemento_banner = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".cc-btn.cc-dismiss")))
+        elemento_banner.click()
+        logging.info("Banner de cookies aceito.")
+    except TimeoutException:
+        pass
+
     lista_vagas = []
 
     # Percorre todas as páginas de resultado até não existir mais próxima página
     while True:
-        try:       
-            try:
-                # Espera os cards de vaga aparecerem; se nenhum aparecer a tempo, considera
-                # que o cargo não teve resultado e devolve o que já foi coletado até aqui
-                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[href*="/job/"]')))
-            except TimeoutException:
-                logging.warning(f"Para o cargo '{termo}' não foram encontradas vagas ou a página falhou.")
-                logging.warning(f"Aviso: Tempo limite atingido para o cargo {termo}.")
-                return lista_vagas
+       
+        try:
+            # Espera os cards de vaga aparecerem; se nenhum aparecer a tempo, considera
+            # que o cargo não teve resultado e devolve o que já foi coletado até aqui
+            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[href*="/job/"]')))
+        except TimeoutException:
+            logging.warning(f"Para o cargo '{termo}' não foram encontradas vagas ou a página falhou.")
+            logging.warning(f"Aviso: Tempo limite atingido para o cargo {termo}.")
+            return lista_vagas
 
-            vagas = driver.find_elements(By.CSS_SELECTOR, 'a[href*="/job/"]')
+        vagas = driver.find_elements(By.CSS_SELECTOR, 'a[href*="/job/"]')
 
-            for vaga in vagas:
-                
-                titulo = vaga.find_element(By.TAG_NAME, "h3").text
-
-                empresas = vaga.find_elements(By.TAG_NAME, "p")
-
-                nome_empresa = None
-                data_vaga_publicada = None
-
-                # O card tem dois <p>: um é a empresa, o outro é a data de publicação
-                # (identificados pelo prefixo fixo "Publicada em:")
-                for empresa in empresas:
-                    if not empresa.text.startswith("Publicada em:"):
-                        nome_empresa = empresa.text
-
-                    else:
-                        data_vaga_publicada = empresa.text
-
-                # Local é um campo opcional: pode não vir preenchido em algumas vagas
-                local = vaga.find_elements(By.CSS_SELECTOR, 'span[data-testid="job-location"]')
-
-                if len(local) == 0:
-                    local_vaga = None
-                else:
-                    local_vaga = local[0].text
-
-                # Modelo de trabalho, tipo de vaga e PcD não têm atributo próprio e são
-                # opcionais, então são classificados pelo conteúdo do texto de cada span
-                modelos_trabalho = [
-                    "Presencial",
-                    "Híbrido",
-                    "Remoto"
-                ]
-
-                tipos_vaga = [
-                    "Estágio",
-                    "Efetivo",
-                    "Associado",
-                    "Autônomo",
-                    "Temporário",
-                    "Pessoa Jurídica",
-                    "Trainee",
-                    "Sócio"
-                ]
-
-                elementos_span = vaga.find_elements(By.TAG_NAME, "span")
-
-                modelo_encontrado = None
-                tipo_vaga_encontrada = None
-                pcd_encontrado = None
-
-                for el_span in elementos_span:
-                    if el_span.text in modelos_trabalho:
-                        modelo_encontrado = el_span.text
-
-                    elif el_span.text in tipos_vaga:
-                        tipo_vaga_encontrada = el_span.text
-
-                    elif el_span.text == "Também p/ PcD":
-                        pcd_encontrado = el_span.text
-                        
-                link = vaga.get_attribute("href")
-
-                dic_vagas = {
-                    "Cargo Buscado": termo,
-                    "Titulo": titulo,
-                    "Empresa": nome_empresa,
-                    "Local": local_vaga,
-                    "Modelo": modelo_encontrado,
-                    "Tipo da Vaga": tipo_vaga_encontrada,
-                    "Afirmativa para PcD": pcd_encontrado,
-                    "Data": data_vaga_publicada,
-                    "Link": link
-                }
-
-                lista_vagas.append(dic_vagas)
-
-            # Verifica se existe próxima página habilitada antes de tentar avançar
-            proxima_pagina = driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Próxima página"]')
+        for vaga in vagas:
             
-            if proxima_pagina.is_enabled():
-                proxima_pagina.click()
-                try:
-                    # Espera o conteúdo antigo sumir do DOM antes de considerar a página
-                    # seguinte carregada, evitando StaleElementReferenceException
-                    WebDriverWait(driver, 10).until(EC.staleness_of(vagas[0]))
-                except TimeoutException:
-                    logging.info(f"Timeout ao carregar a próxima página para '{termo}'. Retornando o que foi coletado até aqui.")
-                    return lista_vagas
-            else:
-                break
+            titulo = vaga.find_element(By.TAG_NAME, "h3").text
 
+            empresas = vaga.find_elements(By.TAG_NAME, "p")
+
+            nome_empresa = None
+            data_vaga_publicada = None
+
+            # O card tem dois <p>: um é a empresa, o outro é a data de publicação.
+            # A data é identificada pelo prefixo fixo "Publicada em:"; o navegador
+            # é configurado para pt-BR para manter esse texto consistente também em container.
+            for empresa in empresas:
+                if not empresa.text.startswith("Publicada em:"):
+                    nome_empresa = empresa.text
+
+                else:
+                    data_vaga_publicada = empresa.text
+
+            # Local é um campo opcional: pode não vir preenchido em algumas vagas
+            local = vaga.find_elements(By.CSS_SELECTOR, 'span[data-testid="job-location"]')
+
+            if len(local) == 0:
+                local_vaga = None
+            else:
+                local_vaga = local[0].text
+
+            # Modelo de trabalho, tipo de vaga e PcD não têm atributo próprio e são
+            # opcionais, então são classificados pelo conteúdo do texto de cada span
+            modelos_trabalho = [
+                "Presencial",
+                "Híbrido",
+                "Remoto"
+            ]
+
+            tipos_vaga = [
+                "Estágio",
+                "Efetivo",
+                "Associado",
+                "Autônomo",
+                "Temporário",
+                "Pessoa Jurídica",
+                "Trainee",
+                "Sócio"
+            ]
+
+            elementos_span = vaga.find_elements(By.TAG_NAME, "span")
+
+            modelo_encontrado = None
+            tipo_vaga_encontrada = None
+            pcd_encontrado = None
+
+            for el_span in elementos_span:
+                if el_span.text in modelos_trabalho:
+                    modelo_encontrado = el_span.text
+
+                elif el_span.text in tipos_vaga:
+                    tipo_vaga_encontrada = el_span.text
+
+                elif el_span.text == "Também p/ PcD":
+                    pcd_encontrado = el_span.text
+                    
+            link = vaga.get_attribute("href")
+
+            dic_vagas = {
+                "Cargo Buscado": termo,
+                "Titulo": titulo,
+                "Empresa": nome_empresa,
+                "Local": local_vaga,
+                "Modelo": modelo_encontrado,
+                "Tipo da Vaga": tipo_vaga_encontrada,
+                "Afirmativa para PcD": pcd_encontrado,
+                "Data": data_vaga_publicada,
+                "Link": link
+            }
+
+            lista_vagas.append(dic_vagas)
+        try:
+            # Verifica se existe próxima página antes de tentar avançar
+            proxima_pagina = driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Próxima página"]')
         except NoSuchElementException:
             logging.info(f"Botão não encontrado. Fim das páginas para {termo}.")
-            break           
-            
+            break 
+        
+        if proxima_pagina.is_enabled():
+            proxima_pagina.click()
+            try:
+                # Espera o conteúdo antigo sumir do DOM antes de considerar a página
+                # seguinte carregada, evitando StaleElementReferenceException
+                WebDriverWait(driver, 10).until(EC.staleness_of(vagas[0]))
+            except TimeoutException:
+                logging.info(f"Timeout ao carregar a próxima página para '{termo}'. Retornando o que foi coletado até aqui.")
+                return lista_vagas
+        else:
+            break
+                     
     return lista_vagas
 
 
@@ -184,8 +195,9 @@ def enviar_email(destinatario: str, assunto: str, corpo_email: str, corpo_email_
     Envia uma notificação por e-mail utilizando SMTP com autenticação e TLS.
 
     A mensagem contém uma versão em texto simples e, quando fornecida, uma
-    alternativa em HTML. As credenciais do remetente são obtidas por meio
-    das variáveis de ambiente configuradas no arquivo .env.
+    alternativa em HTML. As credenciais e configurações são obtidas por variáveis
+    de ambiente, carregadas localmente pelo arquivo .env ou fornecidas pelo ambiente
+    de execução em nuvem.
 
     Args:
         destinatario (str): Endereço de e-mail que receberá a notificação.
@@ -246,7 +258,7 @@ if __name__ == "__main__":
 
     ## 3. Iniciar o navegador
 
-    # Criação da instância do navegador e acesso à página inicial do Gupy.
+    # Configuração e criação da instância do navegador para acesso ao portal Gupy.
   
     driver = None
     
@@ -259,8 +271,8 @@ if __name__ == "__main__":
 
         headers = {"X-API-Key": API_KEY}
 
-        # Abre o navegador e acessa a página inicial do Gupy
-        
+        # Configura o Chrome/Chromium para execução headless e força pt-BR,
+        # mantendo os textos do portal consistentes com os tratamentos utilizados.
 
         # Roda sem interface visível (headless) e fixa o tamanho de renderização,
         # já que o site é responsivo e sem isso poderia carregar em layout mobile,
@@ -269,6 +281,8 @@ if __name__ == "__main__":
         opcoes.add_argument("--lang=pt-BR")
         opcoes.add_experimental_option("prefs", {"intl.accept_languages": "pt-BR,pt"})
 
+        # Em containers Linux utiliza o Chromium e ChromeDriver instalados na imagem.
+        # Em execução local no Windows, utiliza o ChromeDriverManager como fallback.
         if os.path.exists("/usr/bin/chromium"):
             opcoes.binary_location = "/usr/bin/chromium"
             opcoes.add_argument("--no-sandbox")
@@ -336,13 +350,19 @@ if __name__ == "__main__":
         # Datas ausentes ou inválidas serão convertidas para NaT
         df_vagas["Data"] = pd.to_datetime(df_vagas["Data"], format="%d/%m/%Y", errors="coerce")
 
-        # Preenche os campos opcionais
-        # Mantém a coluna Data como datetime
-        colunas_nulos = [col for col in df_vagas.columns if col != "Data"]
+        # Preenche apenas os campos opcionais ausentes com "Não informado",
+        # preservando os campos obrigatórios para validação posterior pela API.  
+        colunas_opcionais = [
+            "Local",
+            "Modelo",
+            "Tipo da Vaga",
+            "Afirmativa para PcD"
+        ]
 
-        for coluna in colunas_nulos:
+        for coluna in colunas_opcionais:
             df_vagas[coluna] = df_vagas[coluna].fillna("Não informado")
        
+        # Adapta os nomes das colunas ao esquema esperado pela API.
         df_api = df_vagas.rename(columns={
             "Cargo Buscado": "cargo_buscado",
             "Titulo": "titulo",
@@ -355,9 +375,14 @@ if __name__ == "__main__":
             "Link": "link"
         })
 
+        # Converte a data para o formato ISO esperado pela API (YYYY-MM-DD).
         df_api["data"] = df_api["data"].dt.strftime("%Y-%m-%d")
 
+        # Interrompe o envio após falhas consecutivas de comunicação,
+        # evitando várias tentativas inúteis quando a API estiver indisponível.
         MAX_TENTATIVAS_CONSECUTIVAS = 3
+        # Contadores utilizados para acompanhar o resultado do envio das vagas
+        # e compor o resumo final exibido nos logs e enviado por e-mail.
         vagas_novas_api = 0
         vagas_duplicadas = 0
         erros_validacao = 0
@@ -369,6 +394,8 @@ if __name__ == "__main__":
         datas_invalidas = 0
 
 
+        # Envia cada vaga individualmente para a API.
+        # Vagas com data inválida são descartadas antes da requisição.
         for index, dados_da_linha in df_api.iterrows():
             if pd.isna(dados_da_linha["data"]):
                 datas_invalidas += 1
@@ -426,6 +453,10 @@ if __name__ == "__main__":
                 logging.warning(f"Status inesperado ({status}) para o link {dados_da_linha['link']}: {requisicao.text}")
                 status_inesperados += 1
             
+        ## 6. Resumo da execução e notificação
+
+        # Registra os resultados da execução e define o tipo de notificação
+        # de acordo com a existência ou não de ocorrências.
         logging.info(f"Vagas coletadas nesta execução: {len(df_vagas)}")   
         logging.info(f"Vagas novas cadastradas pela API: {vagas_novas_api}")
         logging.info(f"Total de vagas duplicadas na API: {vagas_duplicadas}")
@@ -531,31 +562,40 @@ if __name__ == "__main__":
         logging.info("=" * 60)
 
     except Exception as e:
+        # Captura falhas não tratadas durante a execução principal e envia
+        # uma notificação com o motivo registrado.
         logging.error(f"Execução falhou: {e}")
 
         assunto = "Falha no monitoramento de vagas"
         corpo = f"""
             A execução do monitoramento de vagas foi interrompida antes da conclusão.
             Motivo registrado: {e}
-            Consulte o arquivo de log para obter mais detalhes sobre a falha.
+            Consulte os logs da execução.
         """
         corpo_html = f"""
             <html>
                 <body>
                     <strong>A execução do monitoramento de vagas foi interrompida antes da conclusão.</strong>
                     <p>Motivo registrado: {e}</p>
-                    <p>Consulte o arquivo de log para obter mais detalhes sobre a falha.</p>
+                    <p>Consulte os logs da execução</p>
                 </body>
             </html>
         """
 
-        enviar_email(
+        email_enviado = enviar_email(
             destinatario=destinatario,
             assunto=assunto,
             corpo_email=corpo,
             corpo_email_html=corpo_html
         )
+
+        if not email_enviado:
+            logging.warning("Execução principal concluída, mas a notificação por e-mail não pôde ser enviada.")
+
+        # Relança a exceção após a notificação para preservar o status de falha da execução.
+        raise
     
     finally:
+        # Garante o encerramento do navegador mesmo quando a execução falha.
         if driver is not None:
             driver.quit()
