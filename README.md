@@ -2,96 +2,108 @@
 
 Projeto de automação desenvolvido em Python com Selenium para pesquisar e coletar vagas de emprego publicadas na plataforma [Gupy](https://www.gupy.io/), filtrando por cargo/palavra-chave e pelo modelo de trabalho remoto.
 
-O projeto nasceu de uma necessidade real: automatizar parte do processo de busca de vagas durante minha transição de carreira para a área de tecnologia. A automação coleta as vagas encontradas, organiza os dados em um DataFrame, mantém um histórico em CSV, envia as vagas da execução atual para uma API hospedada em nuvem e notifica por e-mail o status final de cada execução.
+O projeto nasceu de uma necessidade real: automatizar parte do processo de busca de vagas durante minha transição de carreira para a área de tecnologia. A automação coleta as vagas, organiza e trata os dados com Pandas, envia os resultados para uma API hospedada em nuvem e notifica por e-mail o status final de cada execução.
+
+A versão atual é executada de forma automatizada em container no Google Cloud Run Jobs, com disparos programados pelo Cloud Scheduler. A API integrada é a fonte de verdade para persistência e controle de duplicidade das vagas.
 
 ## Objetivo
 
-Automatizar a busca de oportunidades de emprego no Gupy para diferentes cargos de interesse, priorizando vagas com modelo de trabalho remoto, mantendo um histórico local das oportunidades encontradas, integrando a automação a uma API responsável pela persistência dos dados e enviando notificações por e-mail com o resumo da execução.
+Automatizar a busca de oportunidades de emprego no Gupy para diferentes cargos de interesse, priorizando vagas remotas e mantendo o processo independente da execução manual no computador local.
+
+Além da coleta, o projeto busca praticar conceitos de automação web, tratamento de dados, integração via API, autenticação, containers, execução agendada em nuvem, gerenciamento de secrets, logs e notificações.
 
 ## Arquitetura atual
 
 ```text
-Gupy
-  ↓
-Selenium
-  ↓
+Cloud Scheduler
+      ↓
+Cloud Run Job
+(Docker + Python + Selenium + Chromium)
+      ↓
+     Gupy
+      ↓
 Pandas / tratamento dos dados
-  ├──→ Histórico local em CSV
-  ├──→ HTTPS + X-API-Key
-  │       ↓
-  │     FastAPI
-  │       ↓
-  │     Google Cloud Run
-  │       ↓
-  │     Neon PostgreSQL
-  └──→ Notificação por e-mail
-          ↓
-        Gmail SMTP + TLS
+      ├──→ HTTPS + X-API-Key
+      │          ↓
+      │       FastAPI
+      │          ↓
+      │   Cloud Run Service
+      │          ↓
+      │    Neon PostgreSQL
+      │
+      └──→ Gmail SMTP + TLS
+                 ↓
+          Notificação por e-mail
 ```
 
-O CSV continua sendo mantido como histórico local da automação, enquanto a integração HTTP envia as vagas da execução atual para a API. A API é executada no Google Cloud Run e persiste os dados em PostgreSQL hospedado no Neon.
+Serviços de apoio utilizados na infraestrutura:
 
-Ao final do processamento, uma notificação por e-mail informa se a execução terminou com sucesso, com ocorrências ou com falha.
+```text
+Artifact Registry → armazena a imagem Docker da automação
+Secret Manager    → disponibiliza secrets ao Cloud Run Job
+Cloud Logging     → captura os logs enviados para stdout/stderr
+```
+
+A automação pode continuar sendo executada localmente para desenvolvimento e testes, mas a execução de produção não depende do computador do usuário.
 
 ## Tecnologias
 
 - Python
 - Selenium
+- Chromium / Google Chrome
 - Pandas
 - Requests
 - WebDriver Manager
 - python-dotenv
+- Docker
 - FastAPI (API externa integrada ao projeto)
+- Google Cloud Run Jobs
 - Google Cloud Run
+- Google Cloud Scheduler
+- Google Artifact Registry
+- Google Secret Manager
+- Google Cloud Logging
 - Neon PostgreSQL
 - SMTP com TLS para envio das notificações
-- Jupyter Notebook (utilizado durante a prototipagem)
-- `pathlib`, `logging`, `os`, `smtplib` e `email` (bibliotecas padrão do Python)
+- Git e GitHub
 
 ## Funcionalidades
 
-- [X] Buscar vagas por cargo/palavra-chave no Gupy por meio de URL parametrizada
-- [X] Filtrar apenas vagas com modelo de trabalho remoto
+- [X] Buscar vagas por cargo/palavra-chave no Gupy por URL parametrizada
+- [X] Filtrar vagas pelo modelo de trabalho remoto
 - [X] Buscar múltiplos cargos em uma única execução
-- [X] Extrair informações das vagas:
-  - Cargo pesquisado
-  - Título
-  - Empresa
-  - Local
-  - Modelo de trabalho
-  - Tipo da vaga
-  - Afirmativa para PcD
-  - Data de publicação
-  - Link
-- [X] Navegar automaticamente por todas as páginas de resultados
+- [X] Extrair cargo pesquisado, título, empresa, local, modelo, tipo da vaga, indicação PcD, data e link
+- [X] Navegar automaticamente pelas páginas de resultados
 - [X] Utilizar esperas explícitas com `WebDriverWait`
-- [X] Tratar timeouts e buscas sem resultados
-- [X] Tratar valores ausentes e datas inválidas sem interromper a execução
+- [X] Tratar buscas sem resultados e timeouts durante a coleta
+- [X] Tratar o banner de cookies para evitar interceptação dos controles de paginação
 - [X] Organizar os resultados em um DataFrame
-- [X] Acumular resultados entre diferentes execuções
-- [X] Remover vagas duplicadas no CSV utilizando o link como identificador
-- [X] Exportar os resultados para CSV
-- [X] Enviar as vagas da execução atual para uma API via HTTP
-- [X] Carregar a URL e a chave da API por variáveis de ambiente
+- [X] Converter datas para o formato esperado pela API
+- [X] Preencher somente campos opcionais ausentes com `Não informado`
+- [X] Ignorar vagas com data inválida sem derrubar toda a execução
+- [X] Enviar as vagas coletadas para uma API via HTTP
 - [X] Autenticar requisições utilizando o header `X-API-Key`
-- [X] Tratar respostas HTTP de vaga cadastrada, duplicidade, erro de validação, falha de autenticação e status inesperados
-- [X] Interromper os envios em caso de falha de autenticação HTTP `401`
-- [X] Configurar timeout para as requisições HTTP
-- [X] Interromper os envios para a API após o limite de falhas consecutivas
-- [X] Integrar a automação à API hospedada no Google Cloud Run
+- [X] Tratar cadastro, duplicidade, validação, autenticação e status HTTP inesperados
+- [X] Configurar timeout nas requisições HTTP
+- [X] Interromper o envio para a API após um limite de falhas consecutivas
 - [X] Persistir as vagas remotamente em PostgreSQL por meio da API
-- [X] Registrar as execuções e ocorrências em arquivo de log
 - [X] Diferenciar execução concluída com sucesso, concluída com ocorrências e execução com falha
-- [X] Enviar uma notificação por e-mail conforme o status final da execução
-- [X] Incluir no mesmo e-mail uma versão em texto simples e uma alternativa em HTML
-- [X] Proteger credenciais e configurações sensíveis por meio de variáveis de ambiente
+- [X] Enviar notificação por e-mail em texto simples e HTML
+- [X] Registrar falha no envio da notificação sem invalidar um processamento principal já concluído
+- [X] Relançar falhas do fluxo principal para preservar o status correto da execução no Cloud Run
 - [X] Executar o navegador em modo headless
-- [X] Fechar o navegador com segurança utilizando `try/finally`
-- [X] Permitir execução periódica pelo Agendador de Tarefas do Windows
+- [X] Executar em ambiente local Windows ou em container Linux
+- [X] Forçar o navegador para `pt-BR` para manter consistência nos textos tratados
+- [X] Encerrar o navegador com segurança utilizando `try/finally`
+- [X] Registrar logs em stdout/stderr para captura pelo Cloud Logging
+- [X] Empacotar a automação em imagem Docker
+- [X] Executar a automação no Google Cloud Run Jobs
+- [X] Agendar execuções com Google Cloud Scheduler
+- [X] Utilizar Secret Manager para credenciais sensíveis em produção
 
 ## Cargos pesquisados
 
-Atualmente, a automação pesquisa os seguintes cargos:
+Atualmente, a automação pesquisa:
 
 - Estágio TI
 - Analista de Dados Júnior
@@ -104,139 +116,112 @@ Os cargos podem ser alterados diretamente na lista `cargos` do script.
 
 ## Dados coletados
 
-Os resultados são armazenados nas seguintes colunas:
-
-| Coluna | Descrição |
-| --- | --- |
-| `Cargo Buscado` | Termo utilizado na busca |
-| `Titulo` | Título da vaga |
-| `Empresa` | Empresa responsável pela vaga |
-| `Local` | Localização informada pela vaga |
-| `Modelo` | Modelo de trabalho |
-| `Tipo da Vaga` | Tipo de contratação/oportunidade |
+| Campo                   | Descrição                                 |
+| ----------------------- | ------------------------------------------- |
+| `Cargo Buscado`       | Termo utilizado na pesquisa                 |
+| `Titulo`              | Título da vaga                             |
+| `Empresa`             | Empresa responsável pela vaga              |
+| `Local`               | Localização informada                     |
+| `Modelo`              | Modelo de trabalho                          |
+| `Tipo da Vaga`        | Tipo de contratação/oportunidade          |
 | `Afirmativa para PcD` | Indicação de vaga também destinada a PcD |
-| `Data` | Data de publicação da vaga |
-| `Link` | Link da vaga no Gupy |
+| `Data`                | Data de publicação                        |
+| `Link`                | Link da vaga no Gupy                        |
 
-## Organização dos dados
+Os campos `Local`, `Modelo`, `Tipo da Vaga` e `Afirmativa para PcD` são opcionais e recebem `Não informado` quando ausentes.
 
-As vagas encontradas durante cada execução são transformadas em um DataFrame e comparadas com o histórico existente no arquivo CSV.
+A data é convertida para o formato ISO `YYYY-MM-DD` antes do envio. Caso uma vaga não possua uma data válida, ela é ignorada e a ocorrência é registrada nos logs.
 
-A automação utiliza o `Link` como identificador único para evitar que a mesma vaga seja armazenada mais de uma vez no histórico local.
+## Organização e persistência dos dados
 
-A quantidade de vagas novas é calculada após a deduplicação, permitindo identificar quantas oportunidades foram realmente adicionadas ao CSV naquela execução.
+As vagas encontradas em cada execução são organizadas em um DataFrame e preparadas para o esquema esperado pela API.
 
-Para a integração com a API, somente as vagas coletadas na execução atual são enviadas. A API realiza sua própria validação e controle de duplicidade.
+A versão atual não mantém mais um histórico local em CSV. Essa estratégia foi utilizada nas primeiras versões do projeto, mas foi removida após a API e o PostgreSQL passarem a assumir a persistência dos dados.
+
+Cada vaga da execução atual é enviada para a API. O backend utiliza o link da vaga para controlar duplicidades e mantém o banco de dados como fonte de verdade da aplicação.
 
 ## Integração com a API
 
-A automação utiliza a biblioteca `requests` para enviar cada vaga coletada ao endpoint definido na variável de ambiente `API_URL`.
+A biblioteca `requests` é utilizada para enviar cada vaga ao endpoint definido na variável de ambiente `API_URL`.
 
-As requisições de cadastro incluem o header:
+As requisições incluem:
 
 ```http
 X-API-Key: <chave_da_api>
 ```
 
-A chave é carregada da variável de ambiente `API_KEY` e não fica gravada diretamente no código.
+A chave é obtida da variável de ambiente `API_KEY` e não fica gravada diretamente no código.
 
-As respostas são tratadas de acordo com o status HTTP retornado:
+Os principais retornos tratados são:
 
 - `200`: vaga cadastrada com sucesso;
-- `401`: falha de autenticação; o envio de novas vagas é interrompido;
+- `401`: falha de autenticação; novos envios são interrompidos;
 - `409`: vaga já cadastrada;
-- `422`: erro de validação dos dados enviados;
-- outros status: registrados como status HTTP inesperados.
+- `422`: erro de validação;
+- outros status: registrados como resposta HTTP inesperada.
 
-Também são tratados erros de conexão e timeout. Após atingir o limite configurado de falhas consecutivas, somente o envio para a API é interrompido; o restante da automação continua normalmente.
+Erros de conexão e `ReadTimeout` também são tratados. Após o limite configurado de falhas consecutivas, o envio de novas vagas para a API é interrompido para evitar tentativas desnecessárias.
 
-A API utilizada em produção está hospedada no Google Cloud Run e persiste os dados em PostgreSQL no Neon.
+A API utilizada em produção é executada no Google Cloud Run e persiste as vagas em PostgreSQL hospedado no Neon.
 
 ## Notificações por e-mail
 
-Ao final da execução, a automação envia uma notificação com o resultado do monitoramento. A mensagem reúne duas representações do mesmo conteúdo:
+Ao final do processamento, a automação tenta enviar uma notificação pelo SMTP do Gmail na porta `587`, utilizando TLS.
 
-- texto simples, utilizado como fallback por clientes que não exibem HTML;
-- HTML, utilizado como versão formatada pelos clientes compatíveis.
+Cada mensagem possui uma versão em texto simples e uma alternativa em HTML.
 
-As duas versões fazem parte de um único e-mail. O envio utiliza o servidor SMTP do Gmail na porta `587`, com autenticação e conexão protegida por TLS.
+Os principais estados informados são:
 
-As credenciais e configurações externas não ficam gravadas diretamente no código. Elas são carregadas do arquivo `.env` pela biblioteca `python-dotenv`.
+- **Execução finalizada com sucesso:** processamento concluído sem ocorrências contabilizadas;
+- **Execução concluída com ocorrências:** processamento chegou ao final, mas houve erros tratados;
+- **Execução falhou:** uma exceção interrompeu o fluxo principal.
 
-O repositório fornece o arquivo `.env.example` como modelo, sem credenciais reais. O arquivo `.env` local deve permanecer fora do versionamento.
+Se o processamento principal terminar corretamente, mas a notificação por e-mail falhar, a falha do e-mail é registrada em log sem transformar o Job inteiro em falha.
 
-As notificações representam três estados:
-
-- **Execução finalizada com sucesso:** apresenta o resumo da execução sem ocorrências registradas na integração;
-- **Execução concluída com ocorrências:** apresenta os contadores de erros tratados e recomenda consultar o log;
-- **Execução falhou:** informa que o fluxo principal foi interrompido, registra o motivo disponível e recomenda consultar o log.
+Em caso de falha no fluxo principal, a automação envia a notificação possível e relança a exceção para que o ambiente de execução registre o Job como falho.
 
 ## Logs e estabilidade
 
-O projeto registra as execuções em arquivo de log, incluindo:
+Os logs são enviados para a saída padrão da aplicação.
 
-- início da execução;
+Na execução local, eles podem ser acompanhados diretamente no terminal. No Cloud Run Jobs, stdout e stderr são capturados pelo Google Cloud Logging.
+
+Entre as informações registradas estão:
+
+- início e fim da execução;
 - cargos pesquisados;
-- timeouts e ocorrências durante a coleta;
-- erros de conexão com a API;
+- ocorrências durante a coleta;
+- tratamento do banner de cookies;
+- vagas duplicadas;
+- vagas novas cadastradas pela API;
+- datas inválidas;
+- erros de conexão e timeout HTTP;
 - erros de validação;
-- falhas de autenticação na API;
+- falhas de autenticação;
 - status HTTP inesperados;
-- quantidade de vagas novas;
-- quantidade de vagas cadastradas e duplicadas na API;
-- total acumulado de vagas no CSV;
-- resultado do envio da notificação por e-mail;
-- status final da execução.
+- resultado do envio de e-mail;
+- falhas não tratadas do fluxo principal.
 
-O status final pode ser:
+Timeouts ocorridos durante determinadas buscas no Gupy são registrados como warnings e, nesta versão, não alteram sozinhos o status final da execução.
 
-- **Execução finalizada com sucesso:** o fluxo principal chegou ao fim sem ocorrências registradas na integração;
-- **Execução concluída com ocorrências:** o fluxo chegou ao fim, mas houve problemas tratados durante o processamento;
-- **Execução falhou:** uma exceção não tratada interrompeu o fluxo principal antes da conclusão.
-
-> Observação: o tratamento de timeout ocorrido dentro da função de busca do Selenium ainda será refinado para participar também da classificação do status final da execução.
-
-## Estrutura de saída
-
-O projeto cria automaticamente as pastas de armazenamento quando necessário:
-
-```text
-reports/
-└── vagas_encontradas.csv
-
-logs/
-└── execucao.log
-```
-
-O arquivo CSV mantém o histórico acumulado das vagas encontradas.
-
-O arquivo de log registra as execuções com data e hora e o resumo de cada processamento.
-
-## Como executar
+## Execução local
 
 ### 1. Clone o repositório
 
 ```bash
 git clone https://github.com/RomisonCarvalho/selenium-vagas-gupy.git
-```
-
-Entre na pasta do projeto:
-
-```bash
 cd selenium-vagas-gupy
 ```
 
-### 2. Crie um ambiente virtual
-
-Opcional, mas recomendado:
+### 2. Crie e ative um ambiente virtual
 
 ```bash
 python -m venv venv
 ```
 
-Ative o ambiente virtual no Windows:
+No Windows:
 
-```bash
+```powershell
 venv\Scripts\activate
 ```
 
@@ -246,17 +231,15 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-A dependência `python-dotenv` é responsável por carregar as configurações de e-mail e de integração com a API a partir do arquivo `.env`.
-
 ### 4. Configure as variáveis de ambiente
 
-Crie uma cópia do arquivo `.env.example` com o nome `.env`:
+Crie uma cópia do `.env.example`:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Depois, preencha o arquivo `.env`:
+Preencha o `.env` sem versionar credenciais reais:
 
 ```env
 EMAIL_REMETENTE=seu_email@gmail.com
@@ -267,43 +250,105 @@ API_URL=https://seu-servico.run.app/vagas/
 API_KEY=sua_chave_da_api
 ```
 
-Como o envio utiliza o SMTP do Gmail, `EMAIL_SENHA_APP` deve receber uma senha de app da conta remetente, e não a senha comum da conta.
+`EMAIL_SENHA_APP` deve receber uma senha de app válida da conta Gmail utilizada no envio.
 
-`API_URL` deve apontar para o endpoint de cadastro da API e `API_KEY` deve conter a chave utilizada no header `X-API-Key`.
-
-Não versione o arquivo `.env` nem compartilhe suas credenciais.
-
-### 5. Configure o acesso à API
-
-Para utilizar a integração HTTP completa, a API definida em `API_URL` deve estar acessível.
-
-Em produção, a automação pode apontar para a API hospedada no Google Cloud Run. Durante o desenvolvimento, também é possível utilizar uma instância local da API, desde que a URL seja alterada no `.env`.
-
-Caso a API esteja indisponível, a automação mantém o processamento local, registra as falhas, interrompe novas tentativas de envio após atingir o limite configurado e informa as ocorrências na notificação final.
-
-### 6. Execute a automação
+### 5. Execute
 
 ```bash
 python projeto_vagas_gupy.py
 ```
 
-As pastas `reports/` e `logs/` serão criadas automaticamente caso não existam. Ao final do processamento, a automação tentará enviar a notificação para o endereço definido em `EMAIL_DESTINATARIO`.
+A API configurada em `API_URL` precisa estar acessível. Ela pode estar em execução local ou hospedada em nuvem.
 
-## Execução automática
+## Execução com Docker
 
-A automação pode ser configurada para execução periódica utilizando o **Agendador de Tarefas do Windows**.
+A imagem utiliza Python 3.12 Slim, Chromium e ChromeDriver.
 
-A tarefa deve apontar para o executável `python.exe` do ambiente utilizado e passar o caminho completo do arquivo `projeto_vagas_gupy.py` como argumento.
+Para construir a imagem localmente:
 
-No meu ambiente, a execução foi configurada para ocorrer semanalmente.
+```bash
+docker build -t selenium-vagas-gupy:local .
+```
+
+Para executar utilizando as variáveis do arquivo `.env` sem incorporá-las à imagem:
+
+```bash
+docker run --rm --env-file .env selenium-vagas-gupy:local
+```
+
+O `.dockerignore` impede que arquivos sensíveis, ambientes virtuais, caches e artefatos locais sejam enviados para o contexto final da imagem.
+
+## Execução em nuvem
+
+Na versão atual, a imagem Docker é armazenada no Google Artifact Registry e utilizada por um Cloud Run Job.
+
+O Job utiliza Chromium em modo headless e foi configurado com memória suficiente para manter o navegador estável durante a execução.
+
+As credenciais sensíveis são fornecidas ao container por meio do Google Secret Manager, enquanto configurações não sensíveis podem ser definidas como variáveis de ambiente do Job.
+
+A automação é disparada pelo Google Cloud Scheduler:
+
+```text
+Segunda-feira às 12:00
+Quinta-feira às 12:00
+Fuso: America/Sao_Paulo
+```
+
+Expressão cron:
+
+```text
+0 12 * * 1,4
+```
+
+Assim, a execução de produção não depende do computador local permanecer ligado.
+
+## Evolução do projeto
+
+O projeto começou como uma automação local executada no Windows, com persistência em CSV e agendamento pelo Agendador de Tarefas.
+
+Com a evolução do projeto:
+
+```text
+CSV local
+    ↓
+API FastAPI
+    ↓
+PostgreSQL no Neon
+    ↓
+API no Cloud Run
+    ↓
+Automação em Docker
+    ↓
+Cloud Run Jobs
+    ↓
+Cloud Scheduler
+```
+
+A persistência local em CSV e os arquivos locais de log deixaram de ser necessários. A API passou a centralizar os dados e o Cloud Logging passou a concentrar os registros das execuções em nuvem.
+
+Essa evolução foi mantida em dois repositórios separados: um dedicado à automação Selenium e outro dedicado à API.
+
+## Estrutura principal
+
+```text
+selenium-vagas-gupy/
+├── projeto_vagas_gupy.py
+├── requirements.txt
+├── Dockerfile
+├── .dockerignore
+├── .env.example
+├── .gitignore
+├── .gitattributes
+└── README.md
+```
 
 ## Status
 
-🚧 Projeto em evolução.
+✅ **Versão atual concluída e executando em produção na nuvem.**
 
-A automação atualmente realiza busca, coleta, tratamento, histórico em CSV, execução agendada, integração autenticada com uma API hospedada no Google Cloud Run, persistência remota em PostgreSQL e envio de notificações por e-mail com resumo operacional.
+O fluxo principal está containerizado, integrado à API, protegido por autenticação, executado pelo Cloud Run Jobs e agendado pelo Cloud Scheduler.
 
-Como evolução futura, o projeto poderá explorar a execução da própria automação em ambiente de nuvem e novos mecanismos de acompanhamento do ciclo de vida das vagas.
+Possíveis evoluções futuras incluem testes automatizados, CI/CD e mecanismos de acompanhamento do ciclo de vida das vagas.
 
 ## Autor
 

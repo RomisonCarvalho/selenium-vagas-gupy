@@ -1,31 +1,48 @@
 # Ambientes virtuais
+# Mantém dependências e arquivos específicos da máquina fora do repositório.
+.venv/
 venv/
 env/
-.venv/
+ENV/
 
-# Cache Python
+# Cache e bytecode gerados automaticamente pelo Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
 
-# Jupyter Notebooks e checkpoints (evita versionar rascunhos ou testes locais)
+# Jupyter Notebooks e checkpoints
+# Os notebooks foram utilizados apenas durante prototipagem/estudos locais.
 .ipynb_checkpoints/
 *.ipynb
 
-# Configurações de IDEs (VSCode, PyCharm, etc.)
+# Configurações locais de IDE/editor
 .vscode/
 .idea/
+*.code-workspace
 
 # Variáveis de ambiente e arquivos sensíveis
+# Ignora arquivos .env reais, mas permite versionar o modelo .env.example.
 .env
+.env.*
+!.env.example
 
-# Arquivos de dados e logs gerados pela automação
-reports/*.csv
-logs/*.log
+# Caches de ferramentas de teste, tipagem e lint
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Artefatos gerados por build/empacotamento Python
+build/
+dist/
+*.egg-info/
+
+# Artefatos locais e legados da automação
+# CSV e arquivos de log eram utilizados em versões anteriores do projeto.
+reports/
+logs/
 *.csv
 *.log
 
-# Arquivos do sistema operacional
+# Arquivos criados automaticamente pelo sistema operacional
 .DS_Store
 Thumbs.db

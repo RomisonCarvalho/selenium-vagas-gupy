@@ -1,39 +1,54 @@
-# Python
+# Cache e bytecode Python
+# Não são necessários para construir ou executar a aplicação no container.
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 
-# Virtual environments
+# Ambientes virtuais locais
+# O container instala suas próprias dependências a partir do requirements.txt.
 .venv/
 venv/
 env/
 ENV/
 
-# Environment variables / secrets
+# Variáveis de ambiente e secrets
+# Nenhum arquivo .env deve ser incorporado à imagem Docker.
 .env
 .env.*
-!.env.example
 
-# IDE / editor
+# Configurações locais de IDE/editor
 .vscode/
 .idea/
 *.code-workspace
 
-# Git
+# Metadados do Git
+# O histórico do repositório não é necessário dentro da imagem.
 .git/
+.github/
 
-# Arquivos locais antigos
-reports/
-logs/
-*.csv
-
-# Testes / caches de ferramentas
+# Caches de ferramentas de desenvolvimento
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 
-# Build Python
+# Artefatos de build Python
 build/
 dist/
 *.egg-info/
+
+# Artefatos locais e legados
+# CSVs e arquivos de log não fazem parte da persistência atual da aplicação.
+reports/
+logs/
+*.csv
+*.log
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Documentação e metadados do repositório não necessários em runtime
+README.md
+.gitattributes
+.gitignore

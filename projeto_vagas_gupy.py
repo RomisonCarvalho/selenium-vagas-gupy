@@ -551,15 +551,18 @@ if __name__ == "__main__":
             """
 
             logging.info("Execução finalizada com sucesso")
-
-        enviar_email(
+        
+        email_enviado = enviar_email(
             destinatario=destinatario,
             assunto=assunto,
             corpo_email=corpo,
             corpo_email_html=corpo_html
         )
 
-        logging.info("=" * 60)
+        if not email_enviado:
+            logging.warning("Execução principal concluída, mas a notificação por e-mail não pôde ser enviada.")     
+
+        logging.info("=" * 60)              
 
     except Exception as e:
         # Captura falhas não tratadas durante a execução principal e envia
@@ -581,16 +584,12 @@ if __name__ == "__main__":
                 </body>
             </html>
         """
-
-        email_enviado = enviar_email(
+        enviar_email(
             destinatario=destinatario,
             assunto=assunto,
             corpo_email=corpo,
             corpo_email_html=corpo_html
         )
-
-        if not email_enviado:
-            logging.warning("Execução principal concluída, mas a notificação por e-mail não pôde ser enviada.")
 
         # Relança a exceção após a notificação para preservar o status de falha da execução.
         raise
